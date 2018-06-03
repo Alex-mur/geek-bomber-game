@@ -7,14 +7,15 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class BombActor extends Actor{
 
     public enum BombType {
-        BOMB(3, 100, 100, AnimationEmitter.AnimationType.BOMB_BLAST, false, 3),
-        NUKE(10, 200, 10, AnimationEmitter.AnimationType.NUKE_BLAST, true, -1);
+        BOMB(3, 200, 999, AnimationEmitter.AnimationType.BOMB_BLAST, false, 3),
+        NUKE(10, 400, 999, AnimationEmitter.AnimationType.NUKE_BLAST, true, -1);
 
         private int blastRadius;
         private int damage;
@@ -42,6 +43,7 @@ public class BombActor extends Actor{
     private Animation<TextureRegion> bomb_stay;
     private float stateTime;
     private ManActor owner;
+    ArrayList<Actor> checkList;
 
     public static Queue<BombActor> getDetonateQueue() {
         return detonateQueue;
@@ -92,8 +94,9 @@ public class BombActor extends Actor{
         //blast up
         for (int i = 1; i <= currentType.blastRadius; i++) {
             setColliderCell(getCellX(), getCellY() + i);
-            if (checkCollisions()) {
-                break;
+            checkList = checkCollisions();
+            if (!checkList.isEmpty()) {
+                if (!(checkList.get(0) instanceof BotActor || checkList.get(0) instanceof ManActor)) break;
             } else {
                 AnimationEmitter.emitter.createAnimation(position.x, position.y + (i * Mgmt.CELL_SIZE), currentType.sfx);
             }
@@ -102,8 +105,9 @@ public class BombActor extends Actor{
         //blast down
         for (int i = 1; i <= currentType.blastRadius; i++) {
             setColliderCell(getCellX(), getCellY() - i);
-            if (checkCollisions()) {
-                break;
+            checkList = checkCollisions();
+            if (!checkList.isEmpty()) {
+                if (!(checkList.get(0) instanceof BotActor || checkList.get(0) instanceof ManActor)) break;
             } else {
                 AnimationEmitter.emitter.createAnimation(position.x, position.y - (i * Mgmt.CELL_SIZE), currentType.sfx);
             }
@@ -112,8 +116,9 @@ public class BombActor extends Actor{
         //blast left
         for (int i = 1; i <= currentType.blastRadius; i++) {
             setColliderCell(getCellX() - i, getCellY());
-            if (checkCollisions()) {
-                break;
+            checkList = checkCollisions();
+            if (!checkList.isEmpty()) {
+                if (!(checkList.get(0) instanceof BotActor || checkList.get(0) instanceof ManActor)) break;
             } else {
                 AnimationEmitter.emitter.createAnimation(position.x - (i * Mgmt.CELL_SIZE), position.y, currentType.sfx);
             }
@@ -122,8 +127,9 @@ public class BombActor extends Actor{
         //blast right
         for (int i = 1; i <= currentType.blastRadius; i++) {
             setColliderCell(getCellX() + i, getCellY());
-            if (checkCollisions()) {
-                break;
+            checkList = checkCollisions();
+            if (!checkList.isEmpty()) {
+                if (!(checkList.get(0) instanceof BotActor || checkList.get(0) instanceof ManActor)) break;
             } else {
                 AnimationEmitter.emitter.createAnimation(position.x + (i * Mgmt.CELL_SIZE), position.y, currentType.sfx);
             }

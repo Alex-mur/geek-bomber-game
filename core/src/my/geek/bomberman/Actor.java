@@ -4,6 +4,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+
+import java.util.ArrayList;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -37,34 +39,40 @@ public class Actor {
 
     public void update(float dt){}
 
-    public boolean checkCollisions() {
-        boolean isCollide = false;
+    public ArrayList<Actor> checkCollisions() {
+        //boolean isCollide = false;
+        ArrayList<Actor> list = new ArrayList<>();
         for (Actor a : Actor.activeActorsList) {
             if (this.equals(a)) continue;
             if (this.collider.overlaps(a.collider)) {
-                isCollide = true;
+
                 if (a instanceof BombActor) {
                     collideWithBombActorAction((BombActor) a);
+                    list.add(a);
                 }
 
                 if (a instanceof BoxActor) {
                     collideWithBoxActorAction((BoxActor) a);
+                    list.add(a);
                 }
 
                 if (a instanceof ManActor) {
                     collideWithManActorAction((ManActor) a);
+                    list.add(a);
                 }
 
                 if (a instanceof WallActor) {
                     collideWithWallActorAction((WallActor) a);
+                    list.add(a);
                 }
 
                 if (a instanceof BotActor) {
                     collideWithBotActor((BotActor) a);
+                    list.add(a);
                 }
             }
         }
-        return isCollide;
+        return list;
     }
 
     public int getCellX() {
@@ -110,4 +118,7 @@ public class Actor {
         return currentHealth;
     }
 
+    public Vector2 getPosition() {
+        return position;
+    }
 }

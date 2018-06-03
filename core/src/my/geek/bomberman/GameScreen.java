@@ -2,6 +2,7 @@ package my.geek.bomberman;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -13,11 +14,13 @@ public class GameScreen implements Screen {
     private AnimationEmitter animationEmitter;
     private BotEmitter botEmitter;
     private BitmapFont font32;
+    private Camera camera;
 
     private float botCreationTimer;
 
-    public GameScreen(SpriteBatch batch) {
+    public GameScreen(SpriteBatch batch, Camera camera) {
         this.batch = batch;
+        this.camera = camera;
     }
 
     public Map getMap() {
@@ -30,11 +33,9 @@ public class GameScreen implements Screen {
 
     @Override
     public void show() {
-        map = new Map(this);
+        map = new Map(this, "map.dat");
         animationEmitter = new AnimationEmitter();
         botEmitter = new BotEmitter(this);
-        botCreationTimer = 10;
-
         player = new ManActor(this);
         font32 = Assets.getInstance().getAssetManager().get("gomarice32.ttf", BitmapFont.class);
     }
@@ -44,24 +45,25 @@ public class GameScreen implements Screen {
         update(delta);
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        batch.setProjectionMatrix(camera.combined);
         batch.begin();
         map.render(batch);
         Mgmt.renderActiveActors(batch);
         animationEmitter.render(batch);
+        ScreenManager.getInstance().resetCamera();
         player.renderGUI(batch, font32);
         batch.end();
     }
 
     public void update(float dt) {
-
-        botCreationTimer += dt;
-        if (botCreationTimer >= 5) {
-            botEmitter.createBotInRandomPosition();
-            botCreationTimer = 0;
-        }
-
+        cameraUpdate();
         Mgmt.updateActiveActors(dt);
         animationEmitter.update(dt);
+    }
+
+    public void cameraUpdate() {
+        camera.position.set(player.getPosition().x, player.getPosition().y, 0);
+        camera.update();
     }
 
     @Override

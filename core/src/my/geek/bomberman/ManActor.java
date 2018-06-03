@@ -54,7 +54,8 @@ public class ManActor extends Actor {
     }
 
 
-    private static int maxHealth = 200;
+
+    private static int maxHealth = 2000;
     private int score;
     private float speed;
     private boolean isMoving;

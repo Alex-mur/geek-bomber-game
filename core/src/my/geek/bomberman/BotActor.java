@@ -76,7 +76,7 @@ public class BotActor extends Actor {
         currentHealth = 100;
         activate();
         position.set(cellX * Mgmt.CELL_SIZE + Mgmt.CELL_HALF_SIZE, cellY * Mgmt.CELL_SIZE + Mgmt.CELL_HALF_SIZE);
-        collider.setPosition(cellX * Mgmt.CELL_SIZE, cellY * Mgmt.CELL_SIZE);
+        collider.setPosition(position.x - Mgmt.CELL_HALF_SIZE, position.y - Mgmt.CELL_HALF_SIZE);
         isActive = true;
     }
 
@@ -158,6 +158,6 @@ public class BotActor extends Actor {
 
     @Override
     protected void collideWithManActorAction(ManActor a) {
-        a.addDamage(100);
+        a.addDamage(1);
     }
 }

@@ -2,6 +2,8 @@ package my.geek.bomberman;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.viewport.*;
 
@@ -25,6 +27,7 @@ public class ScreenManager {
 
     private SpriteBatch batch;
     private Viewport viewport;
+    private Camera camera;
 
     public Viewport getViewport() {
         return viewport;
@@ -36,10 +39,11 @@ public class ScreenManager {
     public void init(BomberManGame game, SpriteBatch batch) {
         this.game = game;
         this.batch = batch;
+        this.camera = new OrthographicCamera(1280, 720);
         this.viewport = new FitViewport(1280, 720);
-        this.gameScreen = new GameScreen(batch);
+        this.gameScreen = new GameScreen(batch, camera);
         this.menuScreen = new MenuScreen(batch);
-        this.mapEditorScreen = new MapEditorScreen(batch);
+        this.mapEditorScreen = new MapEditorScreen(batch, camera, 2000, 3000);
         this.loadingScreen = new LoadingScreen(batch);
     }
 
@@ -55,6 +59,7 @@ public class ScreenManager {
         if (screen != null) {
             screen.dispose();
         }
+        resetCamera();
         game.setScreen(loadingScreen);
         switch (type) {
             case MENU:
@@ -69,6 +74,12 @@ public class ScreenManager {
                 targetScreen = mapEditorScreen;
                 Assets.getInstance().loadAssets(ScreenType.GAME);
         }
+    }
+
+    public void resetCamera() {
+        camera.position.set(640, 360, 0);
+        camera.update();
+        batch.setProjectionMatrix(camera.combined);
     }
 
     public void goToTarget() {

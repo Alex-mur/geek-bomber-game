@@ -16,10 +16,10 @@ public class BotEmitter {
     }
 
     public void createBotInRandomPosition() {
-        for (BotActor b : botActors) {
+        for (int i = 0; i < botActors.length; i++) {
             int cellX = -200;
             int cellY = -200;
-            if (!b.isActive) {
+            if (!botActors[i].isActive) {
                 while (true) {
                     cellX = MathUtils.random(1, Map.MAP_CELLS_WIDTH - 1);
                     cellY = MathUtils.random(1, Map.MAP_CELLS_HEIGHT - 1);
@@ -27,7 +27,7 @@ public class BotEmitter {
                         break;
                 }
 
-                b.activate(cellX, cellY);
+                botActors[i].activate(cellX, cellY);
                 break;
             }
         }
