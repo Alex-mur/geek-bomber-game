@@ -70,6 +70,11 @@ public class Actor {
                     collideWithBotActor((BotActor) a);
                     list.add(a);
                 }
+
+                if (a instanceof DoorActor) {
+                    collideWithDoorActor((DoorActor) a);
+                    list.add(a);
+                }
             }
         }
         return list;
@@ -92,6 +97,8 @@ public class Actor {
     protected void collideWithWallActorAction(WallActor a) {}
 
     protected void collideWithBotActor(BotActor a) {}
+
+    protected void collideWithDoorActor(DoorActor a) {}
 
     protected void setPosition (float x, float y) {
         position.set(x, y);

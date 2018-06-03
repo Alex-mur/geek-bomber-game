@@ -21,8 +21,8 @@ public class BotEmitter {
             int cellY = -200;
             if (!botActors[i].isActive) {
                 while (true) {
-                    cellX = MathUtils.random(1, Map.MAP_CELLS_WIDTH - 1);
-                    cellY = MathUtils.random(1, Map.MAP_CELLS_HEIGHT - 1);
+                    cellX = MathUtils.random(1, gs.getMap().getMapWidth() - 1);
+                    cellY = MathUtils.random(1, gs.getMap().getMapHeight() - 1);
                     if (gs.getMap().isCellEmpty(cellX, cellY))
                         break;
                 }

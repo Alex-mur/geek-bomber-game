@@ -28,6 +28,7 @@ public class ScreenManager {
     private SpriteBatch batch;
     private Viewport viewport;
     private Camera camera;
+    private int currentLevelID;
 
     public Viewport getViewport() {
         return viewport;
@@ -39,11 +40,12 @@ public class ScreenManager {
     public void init(BomberManGame game, SpriteBatch batch) {
         this.game = game;
         this.batch = batch;
+        currentLevelID = 1;
         this.camera = new OrthographicCamera(1280, 720);
         this.viewport = new FitViewport(1280, 720);
-        this.gameScreen = new GameScreen(batch, camera);
+        this.gameScreen = new GameScreen(batch, camera, currentLevelID);
         this.menuScreen = new MenuScreen(batch);
-        this.mapEditorScreen = new MapEditorScreen(batch, camera, 2000, 3000);
+        this.mapEditorScreen = new MapEditorScreen(batch, camera, 1280, 2560);
         this.loadingScreen = new LoadingScreen(batch);
     }
 
@@ -74,6 +76,13 @@ public class ScreenManager {
                 targetScreen = mapEditorScreen;
                 Assets.getInstance().loadAssets(ScreenType.GAME);
         }
+    }
+
+    public void nextLevel(SpriteBatch batch) {
+        currentLevelID += 1;
+        game.setScreen(loadingScreen);
+        gameScreen = new GameScreen(batch, camera, currentLevelID);
+        changeScreen(ScreenType.GAME);
     }
 
     public void resetCamera() {

@@ -164,4 +164,9 @@ public class BombActor extends Actor{
         AnimationEmitter.emitter.createAnimation(a.getCellX() * Mgmt.CELL_SIZE, a.getCellY() * Mgmt.CELL_SIZE, currentType.sfx);
         owner.addScore(250);
     }
+
+    @Override
+    protected void collideWithDoorActor(DoorActor a) {
+        a.activate();
+    }
 }

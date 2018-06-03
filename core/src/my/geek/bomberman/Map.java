@@ -9,11 +9,35 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 public class Map {
-    public static final int MAP_CELLS_WIDTH = 16;
-    public static final int MAP_CELLS_HEIGHT = 9;
 
-    public Vector2 getStartPosition() {
-        return startPosition;
+    public enum Level {
+        level_1("maps/level_1.dat", 1),
+        level_2("maps/level_2.dat", 2);
+
+        String mapPath;
+        int mapID;
+
+        private Level(String mapPath, int mapID) {
+            this.mapPath = mapPath;
+            this.mapID = mapID;
+        }
+
+        public static int getLevelsCount() {
+            return values().length;
+        }
+
+        public static Level getLevelByID(int id) {
+            for (Level l : values()) {
+                if (l.mapID == id)
+                    return l;
+            }
+            return level_1;
+        }
+
+        public String getMapPath() {
+            return mapPath;
+        }
+
     }
 
     public enum CellType {
@@ -33,12 +57,14 @@ public class Map {
     private int mapWidth;
     private int mapHeight;
     private Vector2 startPosition;
+    private Vector2 doorPosition;
 
     private int[][] data;
     private Texture textureGrass;
     private GameScreen gs;
     private MapEditorScreen mes;
     private Actor[][] mapActors;
+    private DoorActor door;
 
     public Map(GameScreen gs, String mapName) {
         this.gs = gs;
@@ -85,6 +111,10 @@ public class Map {
                         case 's':
                             startPosition = new Vector2(j * Mgmt.CELL_SIZE + Mgmt.CELL_HALF_SIZE, i * Mgmt.CELL_SIZE + Mgmt.CELL_HALF_SIZE);
                             break;
+                        case 'd':
+                            doorPosition = new Vector2(j * Mgmt.CELL_SIZE + Mgmt.CELL_HALF_SIZE, i * Mgmt.CELL_SIZE + Mgmt.CELL_HALF_SIZE);
+                            setCellType(j, i, CellType.CELL_BOX);
+                            door = new DoorActor(doorPosition);
                     }
                 }
             }
@@ -127,6 +157,14 @@ public class Map {
 
     public int getMapHeight() {
         return mapHeight;
+    }
+
+    public Vector2 getStartPosition() {
+        return startPosition;
+    }
+
+    public Vector2 getDoorPosition() {
+        return doorPosition;
     }
 
     public void setCellType(int cellX, int cellY, CellType type) {

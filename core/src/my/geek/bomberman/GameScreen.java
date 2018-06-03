@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class GameScreen implements Screen {
+
     private SpriteBatch batch;
     private Map map;
     private ManActor player;
@@ -15,12 +16,14 @@ public class GameScreen implements Screen {
     private BotEmitter botEmitter;
     private BitmapFont font32;
     private Camera camera;
+    private int levelID;
 
     private float botCreationTimer;
 
-    public GameScreen(SpriteBatch batch, Camera camera) {
+    public GameScreen(SpriteBatch batch, Camera camera, int levelID) {
         this.batch = batch;
         this.camera = camera;
+        this.levelID = levelID;
     }
 
     public Map getMap() {
@@ -33,7 +36,7 @@ public class GameScreen implements Screen {
 
     @Override
     public void show() {
-        map = new Map(this, "maps/map.dat");
+        map = new Map(this, Map.Level.getLevelByID(levelID).getMapPath());
         animationEmitter = new AnimationEmitter();
         botEmitter = new BotEmitter(this);
         player = new ManActor(this);
