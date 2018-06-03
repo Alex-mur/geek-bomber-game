@@ -77,7 +77,7 @@ public class ManActor extends Actor {
     public ManActor(GameScreen gs) {
         this.gs = gs;
         currentFrame = Assets.getInstance().getAtlas().findRegion("man/man_stay_down");
-        position = new Vector2(120, 120);
+        position = gs.getMap().getStartPosition();
         collider = new Rectangle(position.x - Mgmt.CELL_HALF_SIZE, position.y - Mgmt.CELL_HALF_SIZE, Mgmt.CELL_SIZE / 1.8f, Mgmt.CELL_SIZE / 1.8f);
 
         speed = Mgmt.GAME_SPEED * 1.5f;
@@ -87,7 +87,7 @@ public class ManActor extends Actor {
         solidElements = new Vector<>();
         solidElements.add(1); //walls
         solidElements.add(2); //boxes
-        solidElements.add(3);
+        solidElements.add(4); //bombs
         currentHealth = maxHealth;
         score = 0;
         font = Assets.getInstance().getAssetManager().get("gomarice32.ttf", BitmapFont.class);

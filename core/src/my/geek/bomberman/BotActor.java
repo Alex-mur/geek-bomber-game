@@ -54,7 +54,7 @@ public class BotActor extends Actor {
         solidElements = new Vector<>();
         solidElements.add(1); //walls
         solidElements.add(2); //boxes
-        solidElements.add(3);
+        solidElements.add(4); //bombs
         currentHealth = 100;
 
         walk_right = new Animation(animationSpeed,Assets.getInstance().getAtlas().findRegions("alien/walk_right"), Animation.PlayMode.LOOP);

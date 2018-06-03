@@ -12,6 +12,10 @@ public class Map {
     public static final int MAP_CELLS_WIDTH = 16;
     public static final int MAP_CELLS_HEIGHT = 9;
 
+    public Vector2 getStartPosition() {
+        return startPosition;
+    }
+
     public enum CellType {
         CELL_EMPTY(0),
         CELL_WALL(1),
@@ -144,6 +148,10 @@ public class Map {
             ((BotActor)mapActors[cellX][cellY]).activate(cellX, cellY);
             ((BotActor)mapActors[cellX][cellY]).setInactive();
             data[cellX][cellY] = CellType.CELL_EMPTY.id;
+        }
+
+        if (type == CellType.CELL_BOMB) {
+            data[cellX][cellY] = type.id;
         }
 
         if (type == CellType.CELL_EMPTY) {
