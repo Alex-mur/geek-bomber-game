@@ -1,0 +1,31 @@
+package my.geek.bomberman;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+
+public final class Mgmt {
+
+
+    public static final int CELL_SIZE = 80;
+    public static final int CELL_HALF_SIZE = CELL_SIZE / 2;
+    public static final int GAME_SPEED = 100;
+    public static final int SFX_QUANTITY = 200;
+    public static final int BOMB_OBJECTS_QUANTITY = 100;
+    public static final int BOT_QUANTITY = 100;
+
+
+    public static void renderActiveActors(SpriteBatch batch) {
+        for (Actor a : Actor.activeActorsList) {
+            a.render(batch);
+        }
+    }
+
+    public static void updateActiveActors(float dt) {
+        for (Actor a : Actor.activeActorsList) {
+            a.update(dt);
+        }
+    }
+
+
+}
