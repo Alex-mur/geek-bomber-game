@@ -76,6 +76,7 @@ public class Map {
                             break;
                         case '3':
                             setCellType(j, i, CellType.CELL_BOT);
+                            ((BotActor)mapActors[j][i]).setActive();
                             break;
                         case 's':
                             startPosition = new Vector2(j * Mgmt.CELL_SIZE + Mgmt.CELL_HALF_SIZE, i * Mgmt.CELL_SIZE + Mgmt.CELL_HALF_SIZE);
@@ -128,25 +129,29 @@ public class Map {
         if (type == CellType.CELL_WALL) {
             if (mapActors[cellX][cellY] != null) mapActors[cellX][cellY].removeFromActorsList();
             mapActors[cellX][cellY] = new WallActor(cellX * Mgmt.CELL_SIZE, cellY * Mgmt.CELL_SIZE, gs);
+            data[cellX][cellY] = type.id;
         }
 
         if (type == CellType.CELL_BOX) {
             if (mapActors[cellX][cellY] != null) mapActors[cellX][cellY].removeFromActorsList();
             mapActors[cellX][cellY] = new BoxActor(cellX * Mgmt.CELL_SIZE, cellY * Mgmt.CELL_SIZE, gs);
+            data[cellX][cellY] = type.id;
         }
 
         if (type == CellType.CELL_BOT) {
             if (mapActors[cellX][cellY] != null) mapActors[cellX][cellY].removeFromActorsList();
             mapActors[cellX][cellY] = new BotActor(gs);
             ((BotActor)mapActors[cellX][cellY]).activate(cellX, cellY);
-            ((BotActor)mapActors[cellX][cellY]).setPassive();
+            ((BotActor)mapActors[cellX][cellY]).setInactive();
+            data[cellX][cellY] = CellType.CELL_EMPTY.id;
         }
 
         if (type == CellType.CELL_EMPTY) {
             if (mapActors[cellX][cellY] != null) mapActors[cellX][cellY].removeFromActorsList();
+            data[cellX][cellY] = type.id;
         }
 
-        data[cellX][cellY] = type.id;
+
     }
 
     public void clearCell (int cellX, int cellY) {

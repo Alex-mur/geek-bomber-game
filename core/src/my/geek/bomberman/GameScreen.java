@@ -33,7 +33,7 @@ public class GameScreen implements Screen {
 
     @Override
     public void show() {
-        map = new Map(this, "map.dat");
+        map = new Map(this, "maps/map.dat");
         animationEmitter = new AnimationEmitter();
         botEmitter = new BotEmitter(this);
         player = new ManActor(this);

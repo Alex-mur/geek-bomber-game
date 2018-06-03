@@ -81,7 +81,7 @@ public class BotActor extends Actor {
     }
 
     public void render(SpriteBatch batch) {
-        batch.draw(currentFrame, position.x - Mgmt.CELL_HALF_SIZE, position.y - Mgmt.CELL_HALF_SIZE - 15, 0, 0, Mgmt.CELL_SIZE, Mgmt.CELL_SIZE, 1.15f, 1.15f, 0);
+        batch.draw(currentFrame, position.x - Mgmt.CELL_HALF_SIZE, position.y - Mgmt.CELL_HALF_SIZE - 5, 0, 0, Mgmt.CELL_SIZE, Mgmt.CELL_SIZE, 1.10f, 1.10f, 0);
     }
 
 
@@ -152,8 +152,12 @@ public class BotActor extends Actor {
         AnimationEmitter.emitter.createAnimation(position.x, position.y, AnimationEmitter.AnimationType.ALIEN_BLAST);
     }
 
-    public void setPassive() {
+    public void setInactive() {
         isActive = false;
+    }
+
+    public void setActive() {
+        isActive = true;
     }
 
     @Override
