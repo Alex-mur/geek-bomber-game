@@ -3,12 +3,14 @@ package my.geek.bomberman;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 
 import java.util.*;
 
@@ -22,12 +24,20 @@ public class MapEditorActor extends Actor {
     private ArrayList <StringBuilder> guiMessages;
     private BitmapFont font;
 
-    public MapEditorActor(MapEditorScreen mes) {
+    private Camera camera;
+    private Vector3 mouseClickCoord;
+    private Vector3 convertedMouseClickCoord;
+
+    public MapEditorActor(MapEditorScreen mes, Camera camera) {
         this.mes = mes;
+        this.camera = camera;
         currentType = Map.CellType.CELL_WALL;
         currentFrame = Assets.getInstance().getAtlas().findRegion("man/man_stay_down");
         position = new Vector2(120, 120);
         collider = new Rectangle(position.x - Mgmt.CELL_HALF_SIZE, position.y - Mgmt.CELL_HALF_SIZE, Mgmt.CELL_SIZE / 1.8f, Mgmt.CELL_SIZE / 1.8f);
+
+        mouseClickCoord = new Vector3(0, 0, 0);
+        convertedMouseClickCoord = new Vector3(0, 0, 0);
 
         speed = Mgmt.GAME_SPEED * 3f;
         velocity = new Vector2(0, 0);
@@ -70,7 +80,9 @@ public class MapEditorActor extends Actor {
         }
 
         if (Gdx.input.justTouched()) {
-            mes.getMap().setCellType((int) (Gdx.input.getX() / Mgmt.CELL_SIZE), (int) (((Map.MAP_CELLS_HEIGHT * Mgmt.CELL_SIZE) - Gdx.input.getY()) / Mgmt.CELL_SIZE), currentType);
+            mouseClickCoord.set(Gdx.input.getX(), Gdx.input.getY(), 0);
+            convertedMouseClickCoord = camera.unproject(mouseClickCoord);
+            mes.getMap().setCellType((int)(convertedMouseClickCoord.x / Mgmt.CELL_SIZE), (int)(convertedMouseClickCoord.y / Mgmt.CELL_SIZE), currentType);
         }
 
         if (Gdx.input.isKeyPressed(Input.Keys.D)) {

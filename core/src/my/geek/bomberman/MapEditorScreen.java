@@ -32,7 +32,7 @@ public class MapEditorScreen implements Screen {
     @Override
     public void show() {
         map = new Map(this, width, height);
-        mapEditor = new MapEditorActor(this);
+        mapEditor = new MapEditorActor(this, camera);
         font32 = Assets.getInstance().getAssetManager().get("gomarice32.ttf", BitmapFont.class);
     }
 
