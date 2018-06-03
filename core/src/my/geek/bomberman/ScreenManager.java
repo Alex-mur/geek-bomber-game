@@ -78,9 +78,10 @@ public class ScreenManager {
         }
     }
 
-    public void nextLevel(SpriteBatch batch) {
+    public void nextLevel() {
         currentLevelID += 1;
-        game.setScreen(loadingScreen);
+        if (currentLevelID > 2)
+            currentLevelID = 1;
         gameScreen = new GameScreen(batch, camera, currentLevelID);
         changeScreen(ScreenType.GAME);
     }

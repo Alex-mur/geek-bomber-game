@@ -30,6 +30,11 @@ public class BoxActor extends Actor {
         removeFromActorsList();
         gs.getMap().clearCell(getCellX(), getCellY());
         AnimationEmitter.emitter.createAnimation(position.x, position.y, AnimationEmitter.AnimationType.BOX_DESTRUCT);
+        checkCollisions();
     }
 
+    @Override
+    protected void collideWithDoorActor(DoorActor a) {
+        a.activate();
+    }
 }

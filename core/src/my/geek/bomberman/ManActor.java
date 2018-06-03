@@ -241,5 +241,9 @@ public class ManActor extends Actor {
         this.score += score;
     }
 
-
+    @Override
+    protected void collideWithDoorActor(DoorActor a) {
+        a.removeFromActorsList();
+        ScreenManager.getInstance().nextLevel();
+    }
 }

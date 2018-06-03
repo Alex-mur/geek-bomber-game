@@ -1129,6 +1129,264 @@ buttons/button_menu
   index: -1
 
 bomberman_atlas6.png
+size: 1024,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+door/vortex
+  rotate: false
+  xy: 2, 166
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 0
+door/vortex
+  rotate: false
+  xy: 2, 84
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 1
+door/vortex
+  rotate: false
+  xy: 84, 166
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 2
+door/vortex
+  rotate: false
+  xy: 2, 2
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 3
+door/vortex
+  rotate: false
+  xy: 84, 84
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 4
+door/vortex
+  rotate: false
+  xy: 166, 166
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 5
+door/vortex
+  rotate: false
+  xy: 84, 2
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 6
+door/vortex
+  rotate: false
+  xy: 166, 84
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 7
+door/vortex
+  rotate: false
+  xy: 248, 166
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 8
+door/vortex
+  rotate: false
+  xy: 166, 2
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 9
+door/vortex
+  rotate: false
+  xy: 248, 84
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 10
+door/vortex
+  rotate: false
+  xy: 330, 166
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 11
+door/vortex
+  rotate: false
+  xy: 248, 2
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 12
+door/vortex
+  rotate: false
+  xy: 330, 84
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 13
+door/vortex
+  rotate: false
+  xy: 412, 166
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 14
+door/vortex
+  rotate: false
+  xy: 330, 2
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 15
+door/vortex
+  rotate: false
+  xy: 412, 84
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 16
+door/vortex
+  rotate: false
+  xy: 494, 166
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 17
+door/vortex
+  rotate: false
+  xy: 412, 2
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 18
+door/vortex
+  rotate: false
+  xy: 494, 84
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 19
+door/vortex
+  rotate: false
+  xy: 576, 166
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 20
+door/vortex
+  rotate: false
+  xy: 494, 2
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 21
+door/vortex
+  rotate: false
+  xy: 576, 84
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 22
+door/vortex
+  rotate: false
+  xy: 658, 166
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 23
+door/vortex
+  rotate: false
+  xy: 576, 2
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 24
+door/vortex
+  rotate: false
+  xy: 658, 84
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 25
+door/vortex
+  rotate: false
+  xy: 740, 166
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 26
+door/vortex
+  rotate: false
+  xy: 658, 2
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 27
+door/vortex
+  rotate: false
+  xy: 740, 84
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 28
+door/vortex
+  rotate: false
+  xy: 822, 166
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 29
+door/vortex
+  rotate: false
+  xy: 740, 2
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 30
+door/vortex
+  rotate: false
+  xy: 822, 84
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 31
+door/vortex
+  rotate: false
+  xy: 904, 166
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 32
+door/vortex
+  rotate: false
+  xy: 822, 2
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 33
+door/vortex
+  rotate: false
+  xy: 904, 84
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 34
+door/vortex
+  rotate: false
+  xy: 904, 2
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 35
+
+bomberman_atlas7.png
 size: 256,256
 format: RGBA8888
 filter: Nearest,Nearest
@@ -1141,7 +1399,7 @@ ground/grass
   offset: 0, 0
   index: -1
 
-bomberman_atlas7.png
+bomberman_atlas8.png
 size: 1024,256
 format: RGBA8888
 filter: Nearest,Nearest
@@ -1399,7 +1657,7 @@ man/man_walk_up
   offset: 0, 0
   index: 7
 
-bomberman_atlas8.png
+bomberman_atlas9.png
 size: 128,128
 format: RGBA8888
 filter: Nearest,Nearest
