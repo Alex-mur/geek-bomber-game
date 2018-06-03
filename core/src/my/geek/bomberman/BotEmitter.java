@@ -5,11 +5,13 @@ import com.badlogic.gdx.math.MathUtils;
 public class BotEmitter {
 
     private BotActor[] botActors;
-
-    public BotEmitter() {
+    private GameScreen gs;
+    
+    public BotEmitter(GameScreen gs) {
+        this.gs = gs;
         botActors = new BotActor[Mgmt.BOT_QUANTITY];
         for (int i = 0; i < botActors.length; i++) {
-            botActors[i] = new BotActor();
+            botActors[i] = new BotActor(gs);
         }
     }
 
@@ -21,7 +23,7 @@ public class BotEmitter {
                 while (true) {
                     cellX = MathUtils.random(1, Map.MAP_CELLS_WIDTH - 1);
                     cellY = MathUtils.random(1, Map.MAP_CELLS_HEIGHT - 1);
-                    if (Map.map.isCellEmpty(cellX, cellY))
+                    if (gs.getMap().isCellEmpty(cellX, cellY))
                         break;
                 }
 

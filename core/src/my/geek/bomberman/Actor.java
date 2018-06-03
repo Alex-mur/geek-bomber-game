@@ -14,6 +14,7 @@ public class Actor {
     protected Texture texture;
     protected Rectangle collider;
     protected int currentHealth;
+    protected GameScreen gs;
 
     public static final Set<Actor> activeActorsList = ConcurrentHashMap.newKeySet();
     public static final Set<Actor> passiveActorsList = ConcurrentHashMap.newKeySet();

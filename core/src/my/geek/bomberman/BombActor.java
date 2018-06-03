@@ -1,7 +1,9 @@
 package my.geek.bomberman;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
@@ -34,11 +36,10 @@ public class BombActor extends Actor{
             return startAmmoCount;
         }
     }
-
     private static Queue<BombActor> detonateQueue;
     public BombType currentType;
     private boolean isActive;
-    private Animation bomb_stay;
+    private Animation<TextureRegion> bomb_stay;
     private float stateTime;
     private ManActor owner;
 
@@ -46,7 +47,8 @@ public class BombActor extends Actor{
         return detonateQueue;
     }
 
-    public BombActor(BombType type){
+    public BombActor(BombType type, GameScreen gs){
+        this.gs = gs;
         position = new Vector2(-300, -300);
         collider = new Rectangle(position.x, position.y, Mgmt.CELL_SIZE, Mgmt.CELL_SIZE);
         bomb_stay = new Animation(0.007f, Assets.getInstance().getAtlas().findRegions("bomb/bomb_stay"), Animation.PlayMode.LOOP);
@@ -61,7 +63,7 @@ public class BombActor extends Actor{
         this.owner = owner;
         Actor.activeActorsList.add(this);
         setPosition(x, y);
-        Map.map.setCellType(getCellX(), getCellY(), Map.CellType.CELL_BOMB);
+        gs.getMap().setCellType(getCellX(), getCellY(), Map.CellType.CELL_BOMB);
         if (currentType.isRemoteDetonatable) {
             detonateQueue.add(this);
         }
@@ -81,7 +83,7 @@ public class BombActor extends Actor{
 
     public void detonate() {
         removeFromActorsList();
-        Map.map.clearCell(getCellX(), getCellY());
+        gs.getMap().clearCell(getCellX(), getCellY());
         isActive = false;
         stateTime = 0;
         detonateQueue.remove(this);

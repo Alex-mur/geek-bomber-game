@@ -20,14 +20,22 @@ public class GameScreen implements Screen {
         this.batch = batch;
     }
 
+    public Map getMap() {
+        return map;
+    }
+
+    public BotEmitter getBotEmitter() {
+        return botEmitter;
+    }
+
     @Override
     public void show() {
-        map = new Map();
+        map = new Map(this);
         animationEmitter = new AnimationEmitter();
-        botEmitter = new BotEmitter();
+        botEmitter = new BotEmitter(this);
         botCreationTimer = 10;
 
-        player = new ManActor();
+        player = new ManActor(this);
         font32 = Assets.getInstance().getAssetManager().get("gomarice32.ttf", BitmapFont.class);
     }
 

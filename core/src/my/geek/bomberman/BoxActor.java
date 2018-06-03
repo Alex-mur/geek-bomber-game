@@ -6,7 +6,9 @@ import com.badlogic.gdx.math.Vector2;
 
 public class BoxActor extends Actor {
 
-    public BoxActor(float x, float y) {
+        
+    public BoxActor(float x, float y, GameScreen gs) {
+        this.gs = gs;
         texture = Assets.getInstance().getAtlas().findRegion("box/box_stay").getTexture();
         position = new Vector2();
         collider = new Rectangle(x, y, Mgmt.CELL_SIZE, Mgmt.CELL_SIZE);
@@ -26,7 +28,7 @@ public class BoxActor extends Actor {
 
     public void destruct() {
         removeFromActorsList();
-        Map.map.clearCell(getCellX(), getCellY());
+        gs.getMap().clearCell(getCellX(), getCellY());
         AnimationEmitter.emitter.createAnimation(position.x, position.y, AnimationEmitter.AnimationType.BOX_DESTRUCT);
     }
 

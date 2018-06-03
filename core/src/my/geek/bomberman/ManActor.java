@@ -25,7 +25,7 @@ public class ManActor extends Actor {
 
             bombs = new BombActor[Mgmt.BOMB_OBJECTS_QUANTITY];
             for (int i = 0; i < bombs.length; i++) {
-                bombs[i] = new BombActor(type);
+                bombs[i] = new BombActor(type, gs);
             }
 
             ammoCount = type.getStartAmmoCount();
@@ -54,7 +54,6 @@ public class ManActor extends Actor {
     }
 
 
-
     private static int maxHealth = 200;
     private int score;
     private float speed;
@@ -66,7 +65,7 @@ public class ManActor extends Actor {
     private ArrayList<BombWeapon> weaponInventory;
     private BombWeapon currentWeapon;
 
-    private Animation walk_left, walk_right, walk_up, walk_down;
+    private Animation<TextureRegion> walk_left, walk_right, walk_up, walk_down;
     private TextureRegion currentFrame, stay_right, stay_up, stay_left, stay_down;
     private float animationSpeed;
     private float stateTime;
@@ -74,8 +73,8 @@ public class ManActor extends Actor {
     private ArrayList <StringBuilder> guiMessages;
     private BitmapFont font;
 
-    public ManActor() {
-
+    public ManActor(GameScreen gs) {
+        this.gs = gs;
         currentFrame = Assets.getInstance().getAtlas().findRegion("man/man_stay_down");
         position = new Vector2(120, 120);
         collider = new Rectangle(position.x - Mgmt.CELL_HALF_SIZE, position.y - Mgmt.CELL_HALF_SIZE, Mgmt.CELL_SIZE / 1.8f, Mgmt.CELL_SIZE / 1.8f);
@@ -181,22 +180,22 @@ public class ManActor extends Actor {
 
 
 
-            if (Gdx.input.isKeyPressed(Input.Keys.D) && !(solidElements.contains(Map.map.getCellType(getCellX() + 1, getCellY())))) {
+            if (Gdx.input.isKeyPressed(Input.Keys.D) && !(solidElements.contains(gs.getMap().getCellType(getCellX() + 1, getCellY())))) {
                 currentDirection = 0;
                 velocity.set(speed, 0);
                 isMoving = true;
             }
-            if (Gdx.input.isKeyPressed(Input.Keys.W) && !(solidElements.contains(Map.map.getCellType(getCellX(), getCellY() + 1)))) {
+            if (Gdx.input.isKeyPressed(Input.Keys.W) && !(solidElements.contains(gs.getMap().getCellType(getCellX(), getCellY() + 1)))) {
                 currentDirection = 1;
                 velocity.set(0, speed);
                 isMoving = true;
             }
-            if (Gdx.input.isKeyPressed(Input.Keys.A) && !(solidElements.contains(Map.map.getCellType(getCellX() - 1, getCellY())))) {
+            if (Gdx.input.isKeyPressed(Input.Keys.A) && !(solidElements.contains(gs.getMap().getCellType(getCellX() - 1, getCellY())))) {
                 currentDirection = 2;
                 velocity.set(-speed, 0);
                 isMoving = true;
             }
-            if (Gdx.input.isKeyPressed(Input.Keys.S) && !(solidElements.contains(Map.map.getCellType(getCellX(), getCellY() - 1)))) {
+            if (Gdx.input.isKeyPressed(Input.Keys.S) && !(solidElements.contains(gs.getMap().getCellType(getCellX(), getCellY() - 1)))) {
                 currentDirection = 3;
                 velocity.set(0, -speed);
                 isMoving = true;

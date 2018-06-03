@@ -17,11 +17,14 @@ public class MapEditorScreen implements Screen {
     public MapEditorScreen(SpriteBatch batch) {
         this.batch = batch;
     }
+    public Map getMap() {
+        return map;
+    }
 
     @Override
     public void show() {
         map = new Map(0);
-        mapEditor = new MapEditor();
+        mapEditor = new MapEditor(this);
         font32 = Assets.getInstance().getAssetManager().get("gomarice32.ttf", BitmapFont.class);
     }
 

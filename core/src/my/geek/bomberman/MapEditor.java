@@ -5,8 +5,10 @@ import com.badlogic.gdx.Input;
 
 public class MapEditor {
     private Map.CellType currentType;
+    private MapEditorScreen mes;
 
-    public MapEditor() {
+    public MapEditor(MapEditorScreen mes) {
+        this.mes = mes;
        currentType = Map.CellType.CELL_WALL;
     }
 
@@ -28,7 +30,7 @@ public class MapEditor {
         }
 
         if (Gdx.input.justTouched()) {
-            Map.map.setCellType((int)(Gdx.input.getX() / Mgmt.CELL_SIZE), (int)(((Map.MAP_CELLS_HEIGHT * Mgmt.CELL_SIZE) - Gdx.input.getY()) / Mgmt.CELL_SIZE), currentType);
+            mes.getMap().setCellType((int)(Gdx.input.getX() / Mgmt.CELL_SIZE), (int)(((Map.MAP_CELLS_HEIGHT * Mgmt.CELL_SIZE) - Gdx.input.getY()) / Mgmt.CELL_SIZE), currentType);
         }
     }
 }

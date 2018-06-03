@@ -25,20 +25,22 @@ public class BotActor extends Actor {
         }
     }
 
+
     private float speed;
     private boolean isMoving;
     private float currentDistance;
     private int currentDirection;
     private Vector<Integer> solidElements;
 
-    private Animation walk_left, walk_right, walk_up, walk_down;
+    private Animation<TextureRegion> walk_left, walk_right, walk_up, walk_down;
     private TextureRegion currentFrame, stay_right, stay_up, stay_left, stay_down;
     private float animationSpeed;
     private float stateTime;
     boolean isActive;
 
-    public BotActor() {
-
+    public BotActor(GameScreen gs) {
+        
+        this.gs = gs;
         currentFrame = Assets.getInstance().getAtlas().findRegion("alien/walk_down", 0);
         position = new Vector2(-200, -200);
         collider = new Rectangle(position.x - Mgmt.CELL_HALF_SIZE, position.y - Mgmt.CELL_HALF_SIZE, Mgmt.CELL_SIZE / 1.8f, Mgmt.CELL_SIZE / 1.8f);
@@ -107,7 +109,7 @@ public class BotActor extends Actor {
                 currentFrame = stay_down;
 
             Direction direction = Direction.values()[MathUtils.random(0, 3)];
-            if (!solidElements.contains(Map.map.getCellType(getCellX() + direction.dx, getCellY() + direction.dy))) {
+            if (!solidElements.contains(gs.getMap().getCellType(getCellX() + direction.dx, getCellY() + direction.dy))) {
                 velocity.set(direction.dx * speed, direction.dy * speed);
                 currentDirection = direction.directionID;
                 isMoving = true;

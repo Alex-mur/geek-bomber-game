@@ -6,7 +6,8 @@ import com.badlogic.gdx.math.Vector2;
 
 public class WallActor extends Actor{
 
-    public WallActor(float x, float y) {
+    public WallActor(float x, float y, GameScreen gs) {
+        this.gs = gs;
         texture = Assets.getInstance().getAtlas().findRegion("wall/wall_stone").getTexture();
         position = new Vector2();
         collider = new Rectangle(x, y, Mgmt.CELL_SIZE, Mgmt.CELL_SIZE);

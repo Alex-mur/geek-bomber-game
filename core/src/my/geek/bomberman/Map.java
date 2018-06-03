@@ -2,7 +2,6 @@ package my.geek.bomberman;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import javafx.scene.control.Cell;
 
 public class Map {
     public static final int MAP_CELLS_WIDTH = 16;
@@ -23,13 +22,13 @@ public class Map {
     }
 
 
-    public static Map map;
     private int[][] data;
     private Texture textureGrass;
+    private GameScreen gs;
+    private Actor[][] mapActors;
 
-    public static Actor[][] mapActors;
-
-    public Map() {
+    public Map(GameScreen gs) {
+        this.gs = gs;
         data = new int[MAP_CELLS_WIDTH][MAP_CELLS_HEIGHT];
         mapActors = new Actor[MAP_CELLS_WIDTH][MAP_CELLS_HEIGHT];
         textureGrass = Assets.getInstance().getAtlas().findRegion("ground/grass").getTexture();
@@ -37,32 +36,30 @@ public class Map {
 
         for (int i = 0; i < MAP_CELLS_WIDTH; i++) {
             data[i][0] = CellType.CELL_WALL.id;
-            mapActors[i][0] = new WallActor(-100, -100);
+            mapActors[i][0] = new WallActor(-100, -100, gs);
             data[i][MAP_CELLS_HEIGHT - 1] = CellType.CELL_WALL.id;
-            mapActors[i][MAP_CELLS_HEIGHT - 1] = new WallActor(-100, -100);
+            mapActors[i][MAP_CELLS_HEIGHT - 1] = new WallActor(-100, -100, gs);
         }
         for (int i = 0; i < MAP_CELLS_HEIGHT; i++) {
             data[0][i] = CellType.CELL_WALL.id;
-            mapActors[0][i] = new WallActor(-100, -100);
+            mapActors[0][i] = new WallActor(-100, -100, gs);
             data[MAP_CELLS_WIDTH - 1][i] = CellType.CELL_WALL.id;
-            mapActors[MAP_CELLS_WIDTH - 1][i] = new WallActor(-100,-100);
+            mapActors[MAP_CELLS_WIDTH - 1][i] = new WallActor(-100,-100, gs);
         }
         for (int i = 0; i < MAP_CELLS_WIDTH; i++) {
             for (int j = 0; j < MAP_CELLS_HEIGHT; j++) {
                 if(i % 2 == 0 && j % 2 == 0 && data[i][j] == CellType.CELL_EMPTY.id) {
                     data[i][j] = CellType.CELL_BOX.id;
-                    mapActors[i][j] = new BoxActor(-100, -100);
+                    mapActors[i][j] = new BoxActor(-100, -100, gs);
                 }
             }
         }
-        map = this;
     }
 
     public Map(int type) {
         data = new int[MAP_CELLS_WIDTH][MAP_CELLS_HEIGHT];
         mapActors = new Actor[MAP_CELLS_WIDTH][MAP_CELLS_HEIGHT];
         textureGrass = Assets.getInstance().getAtlas().findRegion("ground/grass").getTexture();
-        map = this;
     }
 
     public void render(SpriteBatch batch) {
@@ -90,17 +87,17 @@ public class Map {
     public void setCellType(int cellX, int cellY, CellType type) {
         if (type == CellType.CELL_WALL) {
             if (mapActors[cellX][cellY] != null) mapActors[cellX][cellY].removeFromActorsList();
-            mapActors[cellX][cellY] = new WallActor(cellX * Mgmt.CELL_SIZE, cellY * Mgmt.CELL_SIZE);
+            mapActors[cellX][cellY] = new WallActor(cellX * Mgmt.CELL_SIZE, cellY * Mgmt.CELL_SIZE, gs);
         }
 
         if (type == CellType.CELL_BOX) {
             if (mapActors[cellX][cellY] != null) mapActors[cellX][cellY].removeFromActorsList();
-            mapActors[cellX][cellY] = new BoxActor(cellX * Mgmt.CELL_SIZE, cellY * Mgmt.CELL_SIZE);
+            mapActors[cellX][cellY] = new BoxActor(cellX * Mgmt.CELL_SIZE, cellY * Mgmt.CELL_SIZE, gs);
         }
 
         if (type == CellType.CELL_BOT) {
             if (mapActors[cellX][cellY] != null) mapActors[cellX][cellY].removeFromActorsList();
-            mapActors[cellX][cellY] = new BotActor();
+            mapActors[cellX][cellY] = new BotActor(gs);
             ((BotActor)mapActors[cellX][cellY]).activate(cellX, cellY);
             ((BotActor)mapActors[cellX][cellY]).setPassive();
         }
@@ -115,11 +112,4 @@ public class Map {
     public void clearCell (int cellX, int cellY) {
         data[cellX][cellY] = CellType.CELL_EMPTY.id;
     }
-
-    public void update(float dt) {
-
-    }
-
-
-
 }
