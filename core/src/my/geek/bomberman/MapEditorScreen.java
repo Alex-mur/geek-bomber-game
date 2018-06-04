@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import org.omg.PortableInterceptor.ACTIVE;
+
 public class MapEditorScreen implements Screen {
 
     private SpriteBatch batch;
@@ -44,7 +46,7 @@ public class MapEditorScreen implements Screen {
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
         map.render(batch);
-        Mgmt.renderActiveActors(batch);
+        ActorsKeeper.getInstance().renderActiveActors(batch);
         ScreenManager.getInstance().resetCamera();
         mapEditor.renderGUI(batch, font32);
         batch.end();
@@ -52,7 +54,7 @@ public class MapEditorScreen implements Screen {
 
     public void update(float dt) {
         cameraUpdate();
-        Mgmt.updateActiveActors(dt);
+        ActorsKeeper.getInstance().updateActiveActors(dt);
     }
 
     public void cameraUpdate() {

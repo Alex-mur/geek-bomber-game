@@ -13,12 +13,9 @@ public class GameScreen implements Screen {
     private Map map;
     private ManActor player;
     private AnimationEmitter animationEmitter;
-    private BotEmitter botEmitter;
     private BitmapFont font32;
     private Camera camera;
     private int levelID;
-
-    private float botCreationTimer;
 
     public GameScreen(SpriteBatch batch, Camera camera, int levelID) {
         this.batch = batch;
@@ -30,15 +27,10 @@ public class GameScreen implements Screen {
         return map;
     }
 
-    public BotEmitter getBotEmitter() {
-        return botEmitter;
-    }
-
     @Override
     public void show() {
         map = new Map(this, Map.Level.getLevelByID(levelID).getMapPath());
         animationEmitter = new AnimationEmitter();
-        botEmitter = new BotEmitter(this);
         player = new ManActor(this);
         font32 = Assets.getInstance().getAssetManager().get("gomarice32.ttf", BitmapFont.class);
     }
@@ -51,7 +43,7 @@ public class GameScreen implements Screen {
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
         map.render(batch);
-        Mgmt.renderActiveActors(batch);
+        ActorsKeeper.getInstance().renderActiveActors(batch);
         animationEmitter.render(batch);
         ScreenManager.getInstance().resetCamera();
         player.renderGUI(batch, font32);
@@ -60,7 +52,7 @@ public class GameScreen implements Screen {
 
     public void update(float dt) {
         cameraUpdate();
-        Mgmt.updateActiveActors(dt);
+        ActorsKeeper.getInstance().updateActiveActors(dt);
         animationEmitter.update(dt);
     }
 

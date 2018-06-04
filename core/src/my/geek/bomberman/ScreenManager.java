@@ -43,7 +43,6 @@ public class ScreenManager {
         currentLevelID = 1;
         this.camera = new OrthographicCamera(1280, 720);
         this.viewport = new FitViewport(1280, 720);
-        this.gameScreen = new GameScreen(batch, camera, currentLevelID);
         this.menuScreen = new MenuScreen(batch);
         this.mapEditorScreen = new MapEditorScreen(batch, camera, 1280, 2560);
         this.loadingScreen = new LoadingScreen(batch);
@@ -69,6 +68,7 @@ public class ScreenManager {
                 Assets.getInstance().loadAssets(ScreenType.MENU);
                 break;
             case GAME:
+                gameScreen = new GameScreen(batch, camera, currentLevelID);
                 targetScreen = gameScreen;
                 Assets.getInstance().loadAssets(ScreenType.GAME);
                 break;
@@ -82,7 +82,6 @@ public class ScreenManager {
         currentLevelID += 1;
         if (currentLevelID > 2)
             currentLevelID = 1;
-        gameScreen = new GameScreen(batch, camera, currentLevelID);
         changeScreen(ScreenType.GAME);
     }
 

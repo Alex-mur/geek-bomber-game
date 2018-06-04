@@ -63,7 +63,7 @@ public class BombActor extends Actor{
     public void activate(float x, float y, ManActor owner) {
         isActive = true;
         this.owner = owner;
-        Actor.activeActorsList.add(this);
+        ActorsKeeper.getInstance().getActiveActorsList().add(this);
         setPosition(x, y);
         gs.getMap().setCellType(getCellX(), getCellY(), Map.CellType.CELL_BOMB);
         if (currentType.isRemoteDetonatable) {

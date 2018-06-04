@@ -15,17 +15,4 @@ public final class Mgmt {
     public static final int BOT_QUANTITY = 100;
 
 
-    public static void renderActiveActors(SpriteBatch batch) {
-        for (Actor a : Actor.activeActorsList) {
-            a.render(batch);
-        }
-    }
-
-    public static void updateActiveActors(float dt) {
-        for (Actor a : Actor.activeActorsList) {
-            a.update(dt);
-        }
-    }
-
-
 }

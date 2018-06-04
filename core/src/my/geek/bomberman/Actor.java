@@ -18,21 +18,18 @@ public class Actor {
     protected int currentHealth;
     protected GameScreen gs;
 
-    public static final Set<Actor> activeActorsList = ConcurrentHashMap.newKeySet();
-    public static final Set<Actor> passiveActorsList = ConcurrentHashMap.newKeySet();
-
     public Actor() {
-        Actor.passiveActorsList.add(this);
+        ActorsKeeper.getInstance().getPassiveActorsList().add(this);
     }
 
     public void activate() {
-        Actor.activeActorsList.add(this);
-        Actor.passiveActorsList.remove(this);
+        ActorsKeeper.getInstance().getActiveActorsList().add(this);
+        ActorsKeeper.getInstance().getPassiveActorsList().remove(this);
     }
 
     public void deactivate() {
-        Actor.passiveActorsList.add(this);
-        Actor.activeActorsList.remove(this);
+        ActorsKeeper.getInstance().getPassiveActorsList().add(this);
+        ActorsKeeper.getInstance().getActiveActorsList().remove(this);
     }
 
     public void render(SpriteBatch batch){}
@@ -42,7 +39,7 @@ public class Actor {
     public ArrayList<Actor> checkCollisions() {
         //boolean isCollide = false;
         ArrayList<Actor> list = new ArrayList<>();
-        for (Actor a : Actor.activeActorsList) {
+        for (Actor a : ActorsKeeper.getInstance().getActiveActorsList()) {
             if (this.equals(a)) continue;
             if (this.collider.overlaps(a.collider)) {
 
@@ -118,7 +115,7 @@ public class Actor {
     }
 
     public void removeFromActorsList() {
-        Actor.activeActorsList.remove(this);
+        ActorsKeeper.getInstance().getActiveActorsList().remove(this);
     }
 
     public int getCurrentHealth() {
