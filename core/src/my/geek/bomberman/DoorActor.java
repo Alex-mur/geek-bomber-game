@@ -17,7 +17,7 @@ public class DoorActor extends Actor {
         animation = new Animation(0.05f, Assets.getInstance().getAtlas().findRegions("door/vortex"), Animation.PlayMode.LOOP);
         position = doorPosition;
         collider = new Rectangle(position.x - Mgmt.CELL_HALF_SIZE, position.y - Mgmt.CELL_HALF_SIZE, Mgmt.CELL_SIZE, Mgmt.CELL_SIZE);
-        activate();
+        //activate();
     }
 
     public void render(SpriteBatch batch) {

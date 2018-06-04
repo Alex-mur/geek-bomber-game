@@ -27,10 +27,12 @@ public class BoxActor extends Actor {
     }
 
     public void destruct() {
+        if (gs.getMap().getDoorPosition().x - Mgmt.CELL_HALF_SIZE == position.x && gs.getMap().getDoorPosition().y - Mgmt.CELL_HALF_SIZE == position.y) {
+            gs.getMap().getDoor().activate();
+        }
         removeFromActorsList();
         gs.getMap().clearCell(getCellX(), getCellY());
         AnimationEmitter.emitter.createAnimation(position.x, position.y, AnimationEmitter.AnimationType.BOX_DESTRUCT);
-        checkCollisions();
     }
 
     @Override

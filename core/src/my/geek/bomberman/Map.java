@@ -10,6 +10,10 @@ import java.io.IOException;
 
 public class Map {
 
+    public DoorActor getDoor() {
+        return door;
+    }
+
     public enum Level {
         level_1("maps/level_1.dat", 1),
         level_2("maps/level_2.dat", 2);
@@ -64,7 +68,7 @@ public class Map {
     private GameScreen gs;
     private MapEditorScreen mes;
     private Actor[][] mapActors;
-    //private DoorActor door;
+    private DoorActor door;
 
     public Map(GameScreen gs, String mapName) {
         this.gs = gs;
@@ -114,7 +118,7 @@ public class Map {
                         case 'd':
                             doorPosition = new Vector2(j * Mgmt.CELL_SIZE + Mgmt.CELL_HALF_SIZE, i * Mgmt.CELL_SIZE + Mgmt.CELL_HALF_SIZE);
                             setCellType(j, i, CellType.CELL_BOX);
-                            new DoorActor(doorPosition);
+                            door = new DoorActor(doorPosition);
                     }
                 }
             }
