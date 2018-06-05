@@ -53,6 +53,13 @@ public class Assets {
                 assetManager.finishLoading();
                 atlas = assetManager.get("atlas/bomberman_atlas.atlas", TextureAtlas.class);
                 break;
+            case GAME_OVER:
+                assetManager.load("atlas/bomberman_atlas.atlas", TextureAtlas.class);
+                createStdFont(96);
+                assetManager.finishLoading();
+                atlas = assetManager.get("atlas/bomberman_atlas.atlas", TextureAtlas.class);
+                break;
+
         }
     }
 

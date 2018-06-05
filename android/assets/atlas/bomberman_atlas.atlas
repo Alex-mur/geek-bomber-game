@@ -1,6 +1,6 @@
 
 bomberman_atlas.png
-size: 128,128
+size: 2048,1024
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
@@ -9,6 +9,13 @@ empty
   xy: 2, 2
   size: 80, 80
   orig: 80, 80
+  offset: 0, 0
+  index: -1
+gameOver
+  rotate: false
+  xy: 2, 84
+  size: 1280, 720
+  orig: 1280, 720
   offset: 0, 0
   index: -1
 

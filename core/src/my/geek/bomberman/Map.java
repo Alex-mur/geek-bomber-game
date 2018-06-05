@@ -10,13 +10,10 @@ import java.io.IOException;
 
 public class Map {
 
-    public DoorActor getDoor() {
-        return door;
-    }
-
     public enum Level {
         level_1("maps/level_1.dat", 1),
-        level_2("maps/level_2.dat", 2);
+        level_2("maps/level_2.dat", 2),
+        level_3("maps/level_3.dat", 3);
 
         String mapPath;
         int mapID;
@@ -24,10 +21,6 @@ public class Map {
         private Level(String mapPath, int mapID) {
             this.mapPath = mapPath;
             this.mapID = mapID;
-        }
-
-        public static int getLevelsCount() {
-            return values().length;
         }
 
         public static Level getLevelByID(int id) {
@@ -149,6 +142,10 @@ public class Map {
 
     public boolean isCellEmpty(int cellX, int cellY) {
         return data[cellX][cellY] == CellType.CELL_EMPTY.id;
+    }
+
+    public DoorActor getDoor() {
+        return door;
     }
 
     public int getCellType(int cellX, int cellY) {

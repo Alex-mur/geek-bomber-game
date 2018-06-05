@@ -9,7 +9,7 @@ import com.badlogic.gdx.utils.viewport.*;
 
 public class ScreenManager {
     public enum ScreenType {
-        MENU, GAME, MAP_EDITOR;
+        MENU, GAME, MAP_EDITOR, GAME_OVER;
     }
 
     private static ScreenManager ourInstance = new ScreenManager();
@@ -23,6 +23,7 @@ public class ScreenManager {
     private LoadingScreen loadingScreen;
     private GameScreen gameScreen;
     private MenuScreen menuScreen;
+    private GameOverScreen gameOverScreen;
     private MapEditorScreen mapEditorScreen;
 
     private SpriteBatch batch;
@@ -44,7 +45,9 @@ public class ScreenManager {
         this.camera = new OrthographicCamera(1280, 720);
         this.viewport = new FitViewport(1280, 720);
         this.menuScreen = new MenuScreen(batch);
+        this.gameScreen = new GameScreen(batch, camera, currentLevelID);
         this.mapEditorScreen = new MapEditorScreen(batch, camera, 1280, 2560);
+        this.gameOverScreen = new GameOverScreen(batch);
         this.loadingScreen = new LoadingScreen(batch);
     }
 
@@ -57,6 +60,7 @@ public class ScreenManager {
         Screen screen = game.getScreen();
         Gdx.input.setInputProcessor(null); // ?
         Assets.getInstance().clear();
+        ActorsKeeper.getInstance().clear();
         if (screen != null) {
             screen.dispose();
         }
@@ -68,21 +72,26 @@ public class ScreenManager {
                 Assets.getInstance().loadAssets(ScreenType.MENU);
                 break;
             case GAME:
-                gameScreen = new GameScreen(batch, camera, currentLevelID);
                 targetScreen = gameScreen;
                 Assets.getInstance().loadAssets(ScreenType.GAME);
                 break;
             case MAP_EDITOR:
                 targetScreen = mapEditorScreen;
                 Assets.getInstance().loadAssets(ScreenType.GAME);
+                break;
+            case GAME_OVER:
+                targetScreen = gameOverScreen;
+                Assets.getInstance().loadAssets(ScreenType.GAME_OVER);
+                break;
         }
     }
 
     public void nextLevel() {
         currentLevelID += 1;
-        if (currentLevelID > 2)
+        if (currentLevelID > 3)
             currentLevelID = 1;
-        changeScreen(ScreenType.GAME);
+        ActorsKeeper.getInstance().clear();
+        gameScreen.changeMap(currentLevelID);
     }
 
     public void resetCamera() {

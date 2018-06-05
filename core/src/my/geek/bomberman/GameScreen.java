@@ -61,6 +61,11 @@ public class GameScreen implements Screen {
         camera.update();
     }
 
+    public void changeMap(int id) {
+        map = new Map(this, Map.Level.getLevelByID(id).getMapPath());
+        player = new ManActor(this);
+    }
+
     @Override
     public void dispose() {
         batch.dispose();

@@ -141,6 +141,7 @@ public class ManActor extends Actor {
     }
 
     public void update(float dt) {
+        if (currentHealth <= 0) die();
 
         //change current weapon in cycle
         if (Gdx.input.isKeyJustPressed(Input.Keys.Q)) {
@@ -239,6 +240,10 @@ public class ManActor extends Actor {
 
     public void addScore(int score) {
         this.score += score;
+    }
+
+    public void die() {
+        ScreenManager.getInstance().changeScreen(ScreenManager.ScreenType.GAME_OVER);
     }
 
     @Override
