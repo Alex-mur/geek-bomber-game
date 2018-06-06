@@ -61,27 +61,31 @@ public class ScreenManager {
         Gdx.input.setInputProcessor(null); // ?
         Assets.getInstance().clear();
         ActorsKeeper.getInstance().clear();
-        if (screen != null) {
-            screen.dispose();
-        }
+        //if (screen != null) {
+        //    screen.dispose();
+        //}
         resetCamera();
-        game.setScreen(loadingScreen);
+        //game.setScreen(loadingScreen);
         switch (type) {
             case MENU:
                 targetScreen = menuScreen;
                 Assets.getInstance().loadAssets(ScreenType.MENU);
+                game.setScreen(targetScreen);
                 break;
             case GAME:
                 targetScreen = gameScreen;
                 Assets.getInstance().loadAssets(ScreenType.GAME);
+                game.setScreen(targetScreen);
                 break;
             case MAP_EDITOR:
                 targetScreen = mapEditorScreen;
                 Assets.getInstance().loadAssets(ScreenType.GAME);
+                game.setScreen(targetScreen);
                 break;
             case GAME_OVER:
                 targetScreen = gameOverScreen;
                 Assets.getInstance().loadAssets(ScreenType.GAME_OVER);
+                game.setScreen(targetScreen);
                 break;
         }
     }
@@ -92,6 +96,11 @@ public class ScreenManager {
             currentLevelID = 1;
         ActorsKeeper.getInstance().clear();
         gameScreen.changeMap(currentLevelID);
+    }
+
+    public void endGame() {
+        currentLevelID = 1;
+        changeScreen(ScreenType.GAME_OVER);
     }
 
     public void resetCamera() {

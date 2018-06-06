@@ -8,10 +8,11 @@ import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class GameOverScreen implements Screen {
     private SpriteBatch batch;
-    private Texture texture;
+    private TextureRegion texture;
 
     public GameOverScreen(SpriteBatch batch) {
         this.batch = batch;
@@ -19,14 +20,14 @@ public class GameOverScreen implements Screen {
 
     @Override
     public void show() {
-        texture = Assets.getInstance().getAtlas().findRegion("gameOver").getTexture();
+        texture = Assets.getInstance().getAtlas().findRegion("gameOver");
     }
 
     public void render(float delta) {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
-        batch.draw(texture, 0, 0, 1280, 720);
+        batch.draw(texture, 0, 0, 0, 0, 1280, 720, 1, 1, 0);
         batch.end();
     }
 
@@ -55,6 +56,6 @@ public class GameOverScreen implements Screen {
 
     @Override
     public void dispose() {
-        texture.dispose();
+
     }
 }
