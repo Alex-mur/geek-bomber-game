@@ -81,7 +81,6 @@ public class ManActor extends Actor {
         collider = new Rectangle(position.x - Mgmt.CELL_HALF_SIZE, position.y - Mgmt.CELL_HALF_SIZE, Mgmt.CELL_SIZE / 1.8f, Mgmt.CELL_SIZE / 1.8f);
 
         speed = Mgmt.GAME_SPEED * 1.8f;
-        velocity = new Vector2(0, 0);
         animationSpeed = Mgmt.GAME_SPEED * 0.00045f;
         stateTime = 0f;
         idleStateTime = 0f;
@@ -190,25 +189,21 @@ public class ManActor extends Actor {
 
             if (Gdx.input.isKeyPressed(Input.Keys.D) && !(solidElements.contains(gs.getMap().getCellType(getCellX() + 1, getCellY())))) {
                 currentDirection = 0;
-                velocity.set(speed, 0);
                 isMoving = true;
                 idleStateTime = 0;
             }
             if (Gdx.input.isKeyPressed(Input.Keys.W) && !(solidElements.contains(gs.getMap().getCellType(getCellX(), getCellY() + 1)))) {
                 currentDirection = 1;
-                velocity.set(0, speed);
                 isMoving = true;
                 idleStateTime = 0;
             }
             if (Gdx.input.isKeyPressed(Input.Keys.A) && !(solidElements.contains(gs.getMap().getCellType(getCellX() - 1, getCellY())))) {
                 currentDirection = 2;
-                velocity.set(-speed, 0);
                 isMoving = true;
                 idleStateTime = 0;
             }
             if (Gdx.input.isKeyPressed(Input.Keys.S) && !(solidElements.contains(gs.getMap().getCellType(getCellX(), getCellY() - 1)))) {
                 currentDirection = 3;
-                velocity.set(0, -speed);
                 isMoving = true;
                 idleStateTime = 0;
             }
@@ -280,15 +275,6 @@ public class ManActor extends Actor {
             collider.setPosition(position.x - Mgmt.CELL_HALF_SIZE, position.y - Mgmt.CELL_HALF_SIZE);
         }
         checkCollisions();
-    }
-
-    private void centerAndStopActorInCurrentCell() {
-        position.x = getCellX() * Mgmt.CELL_SIZE + Mgmt.CELL_HALF_SIZE;
-        position.y = getCellY() * Mgmt.CELL_SIZE + Mgmt.CELL_HALF_SIZE;
-        collider.setPosition(position.x - Mgmt.CELL_HALF_SIZE, position.y - Mgmt.CELL_HALF_SIZE);
-        isMoving = false;
-        currentDistance = 0;
-        stateTime = 0;
     }
 
     public void addScore(int score) {

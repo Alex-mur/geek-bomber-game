@@ -28,7 +28,8 @@ public class BotActor extends Actor {
 
     private float speed;
     private boolean isMoving;
-    private float currentDistance;
+    private int currentDistance;
+    private int currentFrameDistance;
     private int currentDirection;
     private Vector<Integer> solidElements;
 
@@ -48,7 +49,6 @@ public class BotActor extends Actor {
         isActive = false;
 
         speed = Mgmt.GAME_SPEED * 1.4f;
-        velocity = new Vector2(0, 0);
         animationSpeed = 0.07f;
         stateTime = 0f;
         solidElements = new Vector<>();
@@ -69,6 +69,7 @@ public class BotActor extends Actor {
 
         isMoving = false;
         currentDistance = 0;
+        currentFrameDistance = 0;
         currentDirection = 3; //0 - right, 1 - up, 2 - left, 3 - down
     }
 
@@ -96,6 +97,8 @@ public class BotActor extends Actor {
         }
 
         if (!isMoving) {
+            stateTime = 0;
+
             if (currentDirection == 0)
                 currentFrame = stay_right;
 
@@ -110,38 +113,67 @@ public class BotActor extends Actor {
 
             Direction direction = Direction.values()[MathUtils.random(0, 3)];
             if (!solidElements.contains(gs.getMap().getCellType(getCellX() + direction.dx, getCellY() + direction.dy))) {
-                velocity.set(direction.dx * speed, direction.dy * speed);
                 currentDirection = direction.directionID;
                 isMoving = true;
             }
 
         } else {
             stateTime += dt;
-            position.mulAdd(velocity, dt);
-            currentDistance += velocity.len() * dt;
-            collider.setPosition(position.x - Mgmt.CELL_HALF_SIZE, position.y - Mgmt.CELL_HALF_SIZE);
 
             if (currentDirection == 0) {
+                currentFrameDistance = (int)(speed * dt);
+                currentDistance += currentFrameDistance;
+                if (currentDistance <= Mgmt.CELL_SIZE) {
+                    position.x += currentFrameDistance;
+                } else {
+                    position.x = getCellX() * Mgmt.CELL_SIZE + Mgmt.CELL_HALF_SIZE;
+                    isMoving = false;
+                    currentDistance = 0;
+                    currentFrameDistance = 0;
+                }
                 currentFrame = walk_right.getKeyFrame(stateTime);
             }
             if (currentDirection == 1) {
+                currentFrameDistance = (int)(speed * dt);
+                currentDistance += currentFrameDistance;
+                if (currentDistance <= Mgmt.CELL_SIZE) {
+                    position.y += currentFrameDistance;
+                } else {
+                    position.y = getCellY() * Mgmt.CELL_SIZE + Mgmt.CELL_HALF_SIZE;
+                    isMoving = false;
+                    currentDistance = 0;
+                    currentFrameDistance = 0;
+                }
                 currentFrame = walk_up.getKeyFrame(stateTime);
             }
             if (currentDirection == 2) {
+                currentFrameDistance = (int)(speed * dt);
+                currentDistance += currentFrameDistance;
+                if (currentDistance <= Mgmt.CELL_SIZE) {
+                    position.x -= currentFrameDistance;
+                } else {
+                    position.x = getCellX() * Mgmt.CELL_SIZE + Mgmt.CELL_HALF_SIZE;
+                    isMoving = false;
+                    currentDistance = 0;
+                    currentFrameDistance = 0;
+                }
                 currentFrame = walk_left.getKeyFrame(stateTime);
             }
             if (currentDirection == 3) {
+                currentFrameDistance = (int)(speed * dt);
+                currentDistance += currentFrameDistance;
+                if (currentDistance <= Mgmt.CELL_SIZE) {
+                    position.y -= currentFrameDistance;
+                } else {
+                    position.y = getCellY() * Mgmt.CELL_SIZE + Mgmt.CELL_HALF_SIZE;
+                    isMoving = false;
+                    currentDistance = 0;
+                    currentFrameDistance = 0;
+                }
                 currentFrame = walk_down.getKeyFrame(stateTime);
             }
 
-            if (currentDistance >= Mgmt.CELL_SIZE) {
-                position.x = getCellX() * Mgmt.CELL_SIZE + Mgmt.CELL_HALF_SIZE;
-                position.y = getCellY() * Mgmt.CELL_SIZE + Mgmt.CELL_HALF_SIZE;
-                collider.setPosition(position.x - Mgmt.CELL_HALF_SIZE, position.y - Mgmt.CELL_HALF_SIZE);
-                isMoving = false;
-                currentDistance = 0;
-                stateTime = 0;
-            }
+            collider.setPosition(position.x - Mgmt.CELL_HALF_SIZE, position.y - Mgmt.CELL_HALF_SIZE);
         }
         checkCollisions();
     }
