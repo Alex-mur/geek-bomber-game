@@ -15,15 +15,15 @@ public class MapEditorScreen implements Screen {
     private Map map;
     private MapEditorActor mapEditor;
     private BitmapFont font32;
-    private int width;
-    private int height;
+    private int cellsX;
+    private int cellsY;
     private Camera camera;
 
 
-    public MapEditorScreen(SpriteBatch batch, Camera camera, int width, int height) {
+    public MapEditorScreen(SpriteBatch batch, Camera camera, int cellsX, int cellsY) {
         this.batch = batch;
-        this.width = width;
-        this.height = height;
+        this.cellsX = cellsX;
+        this.cellsY = cellsY;
         this.camera = camera;
     }
     public Map getMap() {
@@ -33,7 +33,7 @@ public class MapEditorScreen implements Screen {
 
     @Override
     public void show() {
-        map = new Map(this, width, height);
+        map = new Map(this, cellsX, cellsY);
         mapEditor = new MapEditorActor(this, camera);
         font32 = Assets.getInstance().getAssetManager().get("gomarice32.ttf", BitmapFont.class);
     }

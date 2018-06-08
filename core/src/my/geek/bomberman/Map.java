@@ -69,13 +69,26 @@ public class Map {
         loadMap(mapName);
     }
 
-    public Map(MapEditorScreen mes, int width, int height) {
+    public Map(MapEditorScreen mes, int cellsX, int cellsY) {
         this.mes = mes;
-        this.mapWidth = width;
-        this.mapHeight = height;
+        this.mapWidth = cellsX;
+        this.mapHeight = cellsY;
         data = new int[getMapWidth()][getMapHeight()];
         mapActors = new Actor[getMapWidth()][getMapHeight()];
         textureGrass = Assets.getInstance().getAtlas().findRegion("ground/grass").getTexture();
+        createWalls();
+    }
+
+    private void createWalls() {
+        for (int x = 0; x < mapWidth; x++) {
+            setCellType(x, 0, CellType.CELL_WALL);
+            setCellType(x, mapHeight - 1, CellType.CELL_WALL);
+        }
+
+        for (int y = 0; y < mapHeight; y++) {
+            setCellType(0, y, CellType.CELL_WALL);
+            setCellType(mapWidth - 1, y, CellType.CELL_WALL);
+        }
     }
 
     public void loadMap(String mapName) {
