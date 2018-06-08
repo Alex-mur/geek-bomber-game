@@ -46,7 +46,7 @@ public class Map {
 
         private int id;
 
-        private CellType (int id) {
+        CellType (int id) {
             this.id = id;
         }
     }

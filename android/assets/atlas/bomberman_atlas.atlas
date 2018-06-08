@@ -1127,11 +1127,53 @@ size: 512,256
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-buttons/button_menu
+controls/btn_detonate
   rotate: false
   xy: 2, 2
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+controls/btn_down
+  rotate: false
+  xy: 84, 2
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+controls/btn_left
+  rotate: false
+  xy: 166, 2
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+controls/btn_menu
+  rotate: false
+  xy: 2, 84
   size: 500, 129
   orig: 500, 129
+  offset: 0, 0
+  index: -1
+controls/btn_put
+  rotate: false
+  xy: 248, 2
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+controls/btn_right
+  rotate: false
+  xy: 330, 2
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+controls/btn_up
+  rotate: false
+  xy: 412, 2
+  size: 80, 80
+  orig: 80, 80
   offset: 0, 0
   index: -1
 
@@ -1424,14 +1466,14 @@ man/man_idle
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
-  index: 83
+  index: 84
 man/man_idle
   rotate: false
   xy: 2, 166
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
-  index: 84
+  index: 83
 man/man_idle
   rotate: false
   xy: 2, 84
@@ -1445,14 +1487,14 @@ man/man_idle
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
-  index: 82
+  index: 85
 man/man_idle
   rotate: false
   xy: 2, 84
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
-  index: 85
+  index: 82
 man/man_idle
   rotate: false
   xy: 84, 166
@@ -1508,14 +1550,14 @@ man/man_idle
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
-  index: 79
+  index: 88
 man/man_idle
   rotate: false
   xy: 84, 84
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
-  index: 88
+  index: 79
 man/man_idle
   rotate: false
   xy: 166, 166
@@ -1529,14 +1571,14 @@ man/man_idle
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
-  index: 78
+  index: 89
 man/man_idle
   rotate: false
   xy: 166, 166
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
-  index: 89
+  index: 78
 man/man_idle
   rotate: false
   xy: 84, 2
@@ -2582,6 +2624,264 @@ man/man_stay_up
   index: -1
 
 bomberman_atlas9.png
+size: 1024,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+man_old/man_stay_down
+  rotate: false
+  xy: 2, 166
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+man_old/man_walk_down
+  rotate: false
+  xy: 2, 166
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 8
+man_old/man_stay_left
+  rotate: false
+  xy: 2, 84
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+man_old/man_walk_left
+  rotate: false
+  xy: 2, 84
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 8
+man_old/man_stay_right
+  rotate: false
+  xy: 84, 166
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+man_old/man_walk_right
+  rotate: false
+  xy: 84, 166
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 8
+man_old/man_stay_up
+  rotate: false
+  xy: 2, 2
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+man_old/man_walk_up
+  rotate: false
+  xy: 2, 2
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 8
+man_old/man_walk_down
+  rotate: false
+  xy: 84, 84
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 1
+man_old/man_walk_down
+  rotate: false
+  xy: 166, 166
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 2
+man_old/man_walk_down
+  rotate: false
+  xy: 84, 2
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 3
+man_old/man_walk_down
+  rotate: false
+  xy: 166, 84
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 4
+man_old/man_walk_down
+  rotate: false
+  xy: 248, 166
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 5
+man_old/man_walk_down
+  rotate: false
+  xy: 166, 2
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 6
+man_old/man_walk_down
+  rotate: false
+  xy: 248, 84
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 7
+man_old/man_walk_left
+  rotate: false
+  xy: 330, 166
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 1
+man_old/man_walk_left
+  rotate: false
+  xy: 248, 2
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 2
+man_old/man_walk_left
+  rotate: false
+  xy: 330, 84
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 3
+man_old/man_walk_left
+  rotate: false
+  xy: 412, 166
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 4
+man_old/man_walk_left
+  rotate: false
+  xy: 330, 2
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 5
+man_old/man_walk_left
+  rotate: false
+  xy: 412, 84
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 6
+man_old/man_walk_left
+  rotate: false
+  xy: 494, 166
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 7
+man_old/man_walk_right
+  rotate: false
+  xy: 412, 2
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 1
+man_old/man_walk_right
+  rotate: false
+  xy: 494, 84
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 2
+man_old/man_walk_right
+  rotate: false
+  xy: 576, 166
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 3
+man_old/man_walk_right
+  rotate: false
+  xy: 494, 2
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 4
+man_old/man_walk_right
+  rotate: false
+  xy: 576, 84
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 5
+man_old/man_walk_right
+  rotate: false
+  xy: 658, 166
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 6
+man_old/man_walk_right
+  rotate: false
+  xy: 576, 2
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 7
+man_old/man_walk_up
+  rotate: false
+  xy: 658, 84
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 1
+man_old/man_walk_up
+  rotate: false
+  xy: 740, 166
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 2
+man_old/man_walk_up
+  rotate: false
+  xy: 658, 2
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 3
+man_old/man_walk_up
+  rotate: false
+  xy: 740, 84
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 4
+man_old/man_walk_up
+  rotate: false
+  xy: 822, 166
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 5
+man_old/man_walk_up
+  rotate: false
+  xy: 740, 2
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 6
+man_old/man_walk_up
+  rotate: false
+  xy: 822, 84
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: 7
+
+bomberman_atlas10.png
 size: 128,128
 format: RGBA8888
 filter: Nearest,Nearest

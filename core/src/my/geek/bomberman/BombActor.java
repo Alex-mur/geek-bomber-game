@@ -15,7 +15,7 @@ public class BombActor extends Actor{
 
     public enum BombType {
         BOMB(3, 200, 999, AnimationEmitter.AnimationType.BOMB_BLAST, false, 3),
-        NUKE(10, 400, 999, AnimationEmitter.AnimationType.NUKE_BLAST, true, -1);
+        NUKE(10, 400, 1, AnimationEmitter.AnimationType.NUKE_BLAST, true, -1);
 
         private int blastRadius;
         private int damage;

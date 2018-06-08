@@ -41,7 +41,7 @@ public class ManActor extends Actor {
             for (int i = 0; i < bombs.length; i++) {
                 if (!bombs[i].isActive()) {
                     bombs[i].activate(x * Mgmt.CELL_SIZE, y * Mgmt.CELL_SIZE, man);
-                    ammoCount--;
+                    if (type != BombActor.BombType.BOMB) ammoCount--;
                     break;
                 }
             }
@@ -60,6 +60,9 @@ public class ManActor extends Actor {
     private int currentDistance;
     private int currentFrameDistance;
     private byte currentDirection;
+    private byte currentDirectionButtonPressed;
+    private boolean putButtonPressed;
+    private boolean detonateButtonPressed;
     private Vector<Integer> solidElements;
 
     private ArrayList<BombWeapon> weaponInventory;
@@ -120,6 +123,9 @@ public class ManActor extends Actor {
         currentDistance = 0;
         currentFrameDistance = 0;
         currentDirection = 3; //0 - right, 1 - up, 2 - left, 3 - down
+        currentDirectionButtonPressed = 9; //0 - right, 1 - up, 2 - left, 3 - down, 9 stop;
+        putButtonPressed = false;
+        detonateButtonPressed = false;
         activate();
     }
 
@@ -134,38 +140,32 @@ public class ManActor extends Actor {
 
         guiMessages.get(0).append("Health: " + currentHealth);
         guiMessages.get(1).append("Score: " + score);
-        guiMessages.get(2).append("Weapon: " + currentWeapon.type + " -- " + currentWeapon.ammoCount);
+        guiMessages.get(2).append("Weapon: " + currentWeapon.type + ": x" + currentWeapon.ammoCount);
 
         font.draw(batch, guiMessages.get(0), 20, 700);
-        font.draw(batch, guiMessages.get(1), 210, 700);
-        font.draw(batch, guiMessages.get(2), 400, 700);
+        font.draw(batch, guiMessages.get(1), 900, 700);
+        font.draw(batch, guiMessages.get(2), 300, 700);
 
     }
 
     public void update(float dt) {
         if (currentHealth <= 0) die();
 
-        //change current weapon in cycle
-        if (Gdx.input.isKeyJustPressed(Input.Keys.Q)) {
-            for (int i = 0; i < weaponInventory.size(); i++) {
-                if (i == weaponInventory.size() - 1) {
-                    currentWeapon = weaponInventory.get(0);
-                    break;
-                }
-
-                if (weaponInventory.get(i) == currentWeapon) {
-                    currentWeapon = weaponInventory.get(i + 1);
-                    break;
-                }
-            }
+        //change current weapon tu nuke if exists
+        if (weaponInventory.get(1).ammoCount > 0) {
+            currentWeapon = weaponInventory.get(1);
+        } else {
+            currentWeapon = weaponInventory.get(0);
         }
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE) || putButtonPressed) {
             currentWeapon.putBomb(getCellX(), getCellY(), this);
+            putButtonPressed = false;
         }
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.B)) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.B) || detonateButtonPressed) {
             currentWeapon.detonateBomb();
+            putButtonPressed = false;
         }
 
         if (!isMoving) {
@@ -187,22 +187,23 @@ public class ManActor extends Actor {
                     currentFrame = stay_down;
             }
 
-            if (Gdx.input.isKeyPressed(Input.Keys.D) && !(solidElements.contains(gs.getMap().getCellType(getCellX() + 1, getCellY())))) {
+
+            if ((Gdx.input.isKeyPressed(Input.Keys.D) || currentDirectionButtonPressed == 0) && !(solidElements.contains(gs.getMap().getCellType(getCellX() + 1, getCellY())))) {
                 currentDirection = 0;
                 isMoving = true;
                 idleStateTime = 0;
             }
-            if (Gdx.input.isKeyPressed(Input.Keys.W) && !(solidElements.contains(gs.getMap().getCellType(getCellX(), getCellY() + 1)))) {
+            if ((Gdx.input.isKeyPressed(Input.Keys.W) || currentDirectionButtonPressed == 1) && !(solidElements.contains(gs.getMap().getCellType(getCellX(), getCellY() + 1)))) {
                 currentDirection = 1;
                 isMoving = true;
                 idleStateTime = 0;
             }
-            if (Gdx.input.isKeyPressed(Input.Keys.A) && !(solidElements.contains(gs.getMap().getCellType(getCellX() - 1, getCellY())))) {
+            if ((Gdx.input.isKeyPressed(Input.Keys.A) || currentDirectionButtonPressed == 2) && !(solidElements.contains(gs.getMap().getCellType(getCellX() - 1, getCellY())))) {
                 currentDirection = 2;
                 isMoving = true;
                 idleStateTime = 0;
             }
-            if (Gdx.input.isKeyPressed(Input.Keys.S) && !(solidElements.contains(gs.getMap().getCellType(getCellX(), getCellY() - 1)))) {
+            if ((Gdx.input.isKeyPressed(Input.Keys.S) || currentDirectionButtonPressed == 3) && !(solidElements.contains(gs.getMap().getCellType(getCellX(), getCellY() - 1)))) {
                 currentDirection = 3;
                 isMoving = true;
                 idleStateTime = 0;
@@ -275,6 +276,18 @@ public class ManActor extends Actor {
             collider.setPosition(position.x - Mgmt.CELL_HALF_SIZE, position.y - Mgmt.CELL_HALF_SIZE);
         }
         checkCollisions();
+    }
+
+    public void setCurrentDirectionButtonPressed(byte b) {
+        currentDirectionButtonPressed = b;
+    }
+
+    public void setPutButtonPressed() {
+        putButtonPressed = true;
+    }
+
+    public void setDetonateButtonPressed() {
+        detonateButtonPressed = true;
     }
 
     public void addScore(int score) {

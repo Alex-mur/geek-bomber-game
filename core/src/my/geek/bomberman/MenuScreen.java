@@ -56,7 +56,7 @@ public class MenuScreen implements Screen {
         skin.add("font32", font32);
 
         TextButton.TextButtonStyle textButtonStyle = new TextButton.TextButtonStyle();
-        textButtonStyle.up = skin.getDrawable("buttons/button_menu");
+        textButtonStyle.up = skin.getDrawable("controls/btn_menu");
         textButtonStyle.font = font32;
         skin.add("simpleSkin", textButtonStyle);
 
