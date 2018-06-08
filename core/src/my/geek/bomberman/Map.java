@@ -6,7 +6,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.Writer;
 
 public class Map {
 
@@ -134,6 +136,33 @@ public class Map {
         } finally {
             try {
                 br.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void saveMap() {
+        BufferedWriter bw = null;
+        try {
+            bw = new BufferedWriter(Gdx.files.local("custom_maps/test_dat").writer(false));
+            bw.write(String.valueOf(mapWidth));
+            bw.newLine();
+            bw.write(String.valueOf(mapHeight));
+            bw.newLine();
+
+            for (int i = data.length - 1; i >= 0 ; i--) {
+                for (int j = 0; j < data.length; j++) {
+                    bw.write(String.valueOf(data[j][i]));
+                }
+                bw.newLine();
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                bw.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }

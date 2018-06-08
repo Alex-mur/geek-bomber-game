@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector2;
 
 import java.util.*;
 
@@ -219,7 +218,7 @@ public class ManActor extends Actor {
                     position.x += currentFrameDistance;
                 } else {
                     position.x = getCellX() * Mgmt.CELL_SIZE + Mgmt.CELL_HALF_SIZE;
-                    if (!(Gdx.input.isKeyPressed(Input.Keys.D) && !(solidElements.contains(gs.getMap().getCellType(getCellX() + 1, getCellY()))))) {
+                    if (!((Gdx.input.isKeyPressed(Input.Keys.D) || currentDirectionButtonPressed == 0) && !(solidElements.contains(gs.getMap().getCellType(getCellX() + 1, getCellY()))))) {
                         isMoving = false;
                     }
                     currentDistance = 0;
@@ -234,7 +233,7 @@ public class ManActor extends Actor {
                     position.y += currentFrameDistance;
                 } else {
                     position.y = getCellY() * Mgmt.CELL_SIZE + Mgmt.CELL_HALF_SIZE;
-                    if (!(Gdx.input.isKeyPressed(Input.Keys.W) && !(solidElements.contains(gs.getMap().getCellType(getCellX(), getCellY() + 1))))) {
+                    if (!((Gdx.input.isKeyPressed(Input.Keys.W) || currentDirectionButtonPressed == 1) && !(solidElements.contains(gs.getMap().getCellType(getCellX(), getCellY() + 1))))) {
                         isMoving = false;
                     }
                     currentDistance = 0;
@@ -249,7 +248,7 @@ public class ManActor extends Actor {
                     position.x -= currentFrameDistance;
                 } else {
                     position.x = getCellX() * Mgmt.CELL_SIZE + Mgmt.CELL_HALF_SIZE;
-                    if (!(Gdx.input.isKeyPressed(Input.Keys.A) && !(solidElements.contains(gs.getMap().getCellType(getCellX() - 1, getCellY()))))) {
+                    if (!((Gdx.input.isKeyPressed(Input.Keys.A) || currentDirectionButtonPressed == 2) && !(solidElements.contains(gs.getMap().getCellType(getCellX() - 1, getCellY()))))) {
                         isMoving = false;
                     }
                     currentDistance = 0;
@@ -264,7 +263,7 @@ public class ManActor extends Actor {
                     position.y -= currentFrameDistance;
                 } else {
                     position.y = getCellY() * Mgmt.CELL_SIZE + Mgmt.CELL_HALF_SIZE;
-                    if (!(Gdx.input.isKeyPressed(Input.Keys.S) && !(solidElements.contains(gs.getMap().getCellType(getCellX(), getCellY() - 1))))) {
+                    if (!((Gdx.input.isKeyPressed(Input.Keys.S) || currentDirectionButtonPressed == 3) && !(solidElements.contains(gs.getMap().getCellType(getCellX(), getCellY() - 1))))) {
                         isMoving = false;
                     }
                     currentDistance = 0;

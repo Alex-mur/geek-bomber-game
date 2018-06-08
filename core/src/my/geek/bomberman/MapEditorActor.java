@@ -62,6 +62,10 @@ public class MapEditorActor extends Actor {
         font.draw(batch, guiMessages.get(0), 20, 700);
     }
 
+    public void setCurrentType(Map.CellType type) {
+        this.currentType = type;
+    }
+
     public void update(float dt) {
         if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_1)) {
             currentType = Map.CellType.CELL_WALL;
@@ -77,6 +81,10 @@ public class MapEditorActor extends Actor {
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.NUM_0)) {
             currentType = Map.CellType.CELL_EMPTY;
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.M)) {
+            mes.getMap().saveMap();
         }
 
         if (Gdx.input.justTouched()) {
