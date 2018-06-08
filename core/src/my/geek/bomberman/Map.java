@@ -13,7 +13,8 @@ public class Map {
     public enum Level {
         level_1("maps/level_1.dat", 1),
         level_2("maps/level_2.dat", 2),
-        level_3("maps/level_3.dat", 3);
+        level_3("maps/level_3.dat", 3),
+        level_4("maps/level_4.dat", 4);
 
         String mapPath;
         int mapID;

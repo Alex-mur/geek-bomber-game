@@ -41,7 +41,7 @@ public class ScreenManager {
     public void init(BomberManGame game, SpriteBatch batch) {
         this.game = game;
         this.batch = batch;
-        currentLevelID = 1;
+        currentLevelID = 4;
         this.camera = new OrthographicCamera(1280, 720);
         this.viewport = new FitViewport(1280, 720);
         this.menuScreen = new MenuScreen(batch);
