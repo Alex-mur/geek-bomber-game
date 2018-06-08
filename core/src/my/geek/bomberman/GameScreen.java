@@ -6,15 +6,26 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Group;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 public class GameScreen implements Screen {
+
+    private enum Status {
+        PLAY, PAUSE;
+    }
 
     private SpriteBatch batch;
     private Map map;
     private ManActor player;
     private AnimationEmitter animationEmitter;
-    private BitmapFont font32;
+    private BitmapFont guiFont;
     private Camera camera;
+    private Stage stage;
+    private Skin skin;
+    private Group upgradeGroup;
+    private Status currentStatus;
     private int levelID;
 
     public GameScreen(SpriteBatch batch, Camera camera, int levelID) {
@@ -29,10 +40,10 @@ public class GameScreen implements Screen {
 
     @Override
     public void show() {
+        guiFont = Assets.getInstance().getAssetManager().get("gomarice32.ttf", BitmapFont.class);
         map = new Map(this, Map.Level.getLevelByID(levelID).getMapPath());
         animationEmitter = new AnimationEmitter();
         player = new ManActor(this);
-        font32 = Assets.getInstance().getAssetManager().get("gomarice32.ttf", BitmapFont.class);
     }
 
     @Override
@@ -46,7 +57,7 @@ public class GameScreen implements Screen {
         ActorsKeeper.getInstance().renderActiveActors(batch);
         animationEmitter.render(batch);
         ScreenManager.getInstance().resetCamera();
-        player.renderGUI(batch, font32);
+        player.renderGUI(batch, guiFont);
         batch.end();
     }
 

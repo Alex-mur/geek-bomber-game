@@ -143,12 +143,6 @@ public class Map {
         for (int i = 0; i < mapWidth; i++) {
             for (int j = 0; j < mapHeight; j++) {
                 batch.draw(textureGrass, i * Mgmt.CELL_SIZE, j * Mgmt.CELL_SIZE, 0, 0, 80, 80, 1.05f ,1.05f, 0, 0, 0, 160, 160, false, false);
-                if (data[i][j] == CellType.CELL_WALL.id) {
-                    mapActors[i][j].setPosition(i * Mgmt.CELL_SIZE,j * Mgmt.CELL_SIZE);
-                }
-                if (data[i][j] == CellType.CELL_BOX.id) {
-                    mapActors[i][j].setPosition(i * Mgmt.CELL_SIZE,j * Mgmt.CELL_SIZE);
-                }
             }
         }
     }
