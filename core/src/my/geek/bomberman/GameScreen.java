@@ -16,6 +16,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 public class GameScreen implements Screen {
 
+
+
     private enum Status {
         PLAY, PAUSE;
     }
@@ -25,12 +27,14 @@ public class GameScreen implements Screen {
     private ManActor player;
     private AnimationEmitter animationEmitter;
     private BitmapFont guiFont;
+    private BitmapFont infoFont;
     private Camera camera;
     private Stage stage;
     private Skin skin;
     private Group upgradeGroup;
     private Status currentStatus;
     private int levelID;
+
 
     public GameScreen(SpriteBatch batch, Camera camera, int levelID) {
         this.batch = batch;
@@ -45,6 +49,8 @@ public class GameScreen implements Screen {
     @Override
     public void show() {
         guiFont = Assets.getInstance().getAssetManager().get("gomarice32.ttf", BitmapFont.class);
+        infoFont = Assets.getInstance().getAssetManager().get("gomarice16.ttf", BitmapFont.class);
+
         createGUI();
         map = new Map(this, Map.Level.getLevelByID(levelID).getMapPath());
         animationEmitter = new AnimationEmitter();
@@ -79,9 +85,11 @@ public class GameScreen implements Screen {
     }
 
     public void changeMap(int id) {
+        levelID = id;
         map = new Map(this, Map.Level.getLevelByID(id).getMapPath());
-        player = new ManActor(this);
     }
+
+
 
     public void createGUI() {
         stage = new Stage(ScreenManager.getInstance().getViewport(), batch);
@@ -145,9 +153,7 @@ public class GameScreen implements Screen {
     }
 
     @Override
-    public void dispose() {
-        batch.dispose();
-    }
+    public void dispose() {}
 
     @Override
     public void resize(int width, int height) {

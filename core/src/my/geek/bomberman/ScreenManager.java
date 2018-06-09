@@ -9,7 +9,7 @@ import com.badlogic.gdx.utils.viewport.*;
 
 public class ScreenManager {
     public enum ScreenType {
-        MENU, GAME, MAP_EDITOR, GAME_OVER;
+        MENU, GAME, MAP_EDITOR, GAME_OVER, NEXT_LEVEL;
     }
 
     private static ScreenManager ourInstance = new ScreenManager();
@@ -25,6 +25,7 @@ public class ScreenManager {
     private MenuScreen menuScreen;
     private GameOverScreen gameOverScreen;
     private MapEditorScreen mapEditorScreen;
+    private NextLevelScreen nextLevelScreen;
 
     private SpriteBatch batch;
     private Viewport viewport;
@@ -41,7 +42,7 @@ public class ScreenManager {
     public void init(BomberManGame game, SpriteBatch batch) {
         this.game = game;
         this.batch = batch;
-        currentLevelID = 4;
+        currentLevelID = 1;
         this.camera = new OrthographicCamera(1280, 720);
         this.viewport = new FitViewport(1280, 720);
         this.menuScreen = new MenuScreen(batch);
@@ -49,6 +50,7 @@ public class ScreenManager {
         this.mapEditorScreen = new MapEditorScreen(batch, camera, 5, 5);
         this.gameOverScreen = new GameOverScreen(batch);
         this.loadingScreen = new LoadingScreen(batch);
+        this.nextLevelScreen = new NextLevelScreen(batch);
     }
 
     public void resize(int width, int height) {
@@ -57,10 +59,14 @@ public class ScreenManager {
     }
 
     public void changeScreen(ScreenType type) {
+        Screen screen = game.getScreen();
         Gdx.input.setInputProcessor(null); // ?
         Assets.getInstance().clear();
         ActorsKeeper.getInstance().clear();
         resetCamera();
+        if (screen != null) {
+            screen.dispose();
+        }
         game.setScreen(loadingScreen);
         switch (type) {
             case MENU:
@@ -75,6 +81,10 @@ public class ScreenManager {
                 targetScreen = mapEditorScreen;
                 Assets.getInstance().loadAssets(ScreenType.GAME);
                 break;
+            case NEXT_LEVEL:
+                targetScreen = nextLevelScreen;
+                Assets.getInstance().loadAssets(ScreenType.MENU);
+                break;
             case GAME_OVER:
                 targetScreen = gameOverScreen;
                 Assets.getInstance().loadAssets(ScreenType.GAME_OVER);
@@ -86,8 +96,9 @@ public class ScreenManager {
         currentLevelID += 1;
         if (currentLevelID > 3)
             currentLevelID = 1;
-        ActorsKeeper.getInstance().clear();
         gameScreen.changeMap(currentLevelID);
+        System.out.println(currentLevelID);
+        changeScreen(ScreenType.GAME);
     }
 
     public void endGame() {

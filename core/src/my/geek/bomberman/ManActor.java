@@ -74,7 +74,7 @@ public class ManActor extends Actor {
     private float idleStateTime;
 
     private ArrayList <StringBuilder> guiMessages;
-    private BitmapFont font;
+
 
     public ManActor(GameScreen gs) {
         this.gs = gs;
@@ -92,7 +92,6 @@ public class ManActor extends Actor {
         solidElements.add(4); //bombs
         currentHealth = Mgmt.PLAYER_MAX_HEALTH;
         score = 0;
-        font = Assets.getInstance().getAssetManager().get("gomarice32.ttf", BitmapFont.class);
 
         //weapons
         weaponInventory = new ArrayList<>();
@@ -104,7 +103,6 @@ public class ManActor extends Actor {
         for (int i = 0; i < 3; i++) {
             guiMessages.add(new StringBuilder());
         }
-
 
 
         walk_right = new Animation(animationSpeed,Assets.getInstance().getAtlas().findRegions("man/man_run_right"), Animation.PlayMode.LOOP);
@@ -130,6 +128,7 @@ public class ManActor extends Actor {
 
     public void render(SpriteBatch batch) {
         batch.draw(currentFrame, position.x - Mgmt.CELL_HALF_SIZE, position.y - Mgmt.CELL_HALF_SIZE);
+
     }
 
     public void renderGUI(SpriteBatch batch, BitmapFont font) {
@@ -144,7 +143,6 @@ public class ManActor extends Actor {
         font.draw(batch, guiMessages.get(0), 20, 700);
         font.draw(batch, guiMessages.get(1), 900, 700);
         font.draw(batch, guiMessages.get(2), 300, 700);
-
     }
 
     public void update(float dt) {
@@ -304,6 +302,6 @@ public class ManActor extends Actor {
     @Override
     protected void collideWithDoorActor(DoorActor a) {
         a.removeFromActorsList();
-        ScreenManager.getInstance().nextLevel();
+        ScreenManager.getInstance().changeScreen(ScreenManager.ScreenType.NEXT_LEVEL);
     }
 }
