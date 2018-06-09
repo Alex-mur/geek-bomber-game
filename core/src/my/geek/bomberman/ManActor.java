@@ -300,6 +300,12 @@ public class ManActor extends Actor {
     }
 
     @Override
+    protected void addDamage(int damage) {
+        super.addDamage(damage);
+        gs.showMessage(position.x, position.y, "-" + damage + " HP");
+    }
+
+    @Override
     protected void collideWithDoorActor(DoorActor a) {
         a.removeFromActorsList();
         ScreenManager.getInstance().changeScreen(ScreenManager.ScreenType.NEXT_LEVEL);

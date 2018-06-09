@@ -44,7 +44,7 @@ public class ScreenManager {
         this.batch = batch;
         currentLevelID = 1;
         this.camera = new OrthographicCamera(1280, 720);
-        this.viewport = new FitViewport(1280, 720);
+        this.viewport = new FitViewport(1280, 720, camera);
         this.menuScreen = new MenuScreen(batch);
         this.gameScreen = new GameScreen(batch, camera, currentLevelID);
         this.mapEditorScreen = new MapEditorScreen(batch, camera, 5, 5);

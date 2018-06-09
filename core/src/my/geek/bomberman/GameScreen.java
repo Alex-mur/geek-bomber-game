@@ -35,6 +35,7 @@ public class GameScreen implements Screen {
     private BitmapFont infoFont;
     private Camera camera;
     private Stage stage;
+    private Stage messageStage;
     private Skin skin;
     private Status currentStatus;
     private int levelID;
@@ -56,6 +57,10 @@ public class GameScreen implements Screen {
         return map;
     }
 
+    public ManActor getPlayer() {
+        return player;
+    }
+
     @Override
     public void show() {
         guiFont = Assets.getInstance().getAssetManager().get("gomarice32.ttf", BitmapFont.class);
@@ -66,6 +71,9 @@ public class GameScreen implements Screen {
         animationEmitter = new AnimationEmitter();
         player = new ManActor(this);
         currentStatus = Status.PLAY;
+
+
+
     }
 
     @Override
@@ -81,6 +89,9 @@ public class GameScreen implements Screen {
         ScreenManager.getInstance().resetCamera();
         player.renderGUI(batch, guiFont);
         batch.end();
+        cameraUpdate();
+        messageStage.draw();
+        ScreenManager.getInstance().resetCamera();
         stage.draw();
     }
 
@@ -111,7 +122,7 @@ public class GameScreen implements Screen {
     }
 
     public void updateMessage(float x, float y, String text, float dt) {
-        if(showMessage && messageStateTime < 2) {
+        if(showMessage && messageStateTime < 0.5f) {
             messageStateTime += dt;
             messageLabel.setPosition(x, y + 100 * messageStateTime);
             messageLabel.setText(text);
@@ -185,23 +196,23 @@ public class GameScreen implements Screen {
                 }
             });
             arrowGroup.addActor(buttonDetonateBomb);
-
-
-            Label.LabelStyle messageStyle = new Label.LabelStyle();
-            messageStyle.font = infoFont;
-            messageX = 0;
-            messageY = 0;
-            messageText = "test";
-            showMessage = false;
-            messageStateTime = 0;
-            skin.add("messageSkin", messageStyle);
-            messageLabel = new Label(messageText, skin, "messageSkin");
-            messageLabel.setPosition(messageX,messageY);
-            messageLabel.setVisible(false);
             stage.addActor(arrowGroup);
-            stage.addActor(messageLabel);
         //}
 
+
+        messageStage = new Stage(ScreenManager.getInstance().getViewport(), batch);
+        Label.LabelStyle messageStyle = new Label.LabelStyle();
+        messageStyle.font = infoFont;
+        messageX = 0;
+        messageY = 0;
+        messageText = "test";
+        showMessage = false;
+        messageStateTime = 0;
+        skin.add("messageSkin", messageStyle);
+        messageLabel = new Label(messageText, skin, "messageSkin");
+        messageLabel.setPosition(messageX,messageY);
+        messageLabel.setVisible(false);
+        messageStage.addActor(messageLabel);
     }
 
     @Override

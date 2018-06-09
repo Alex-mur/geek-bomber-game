@@ -100,8 +100,11 @@ public class BotActor extends Actor {
         if (isAttacking) {
             if (attackTimeout > 0)
                 attackTimeout -= dt;
-            if (attackTimeout < 0)
+            if (attackTimeout <= 0) {
                 attackTimeout = 0;
+                if (!checkCollisions().contains(gs.getPlayer()))
+                    isAttacking = false;
+            }
         }
 
         if (currentHealth <= 0) {
@@ -207,13 +210,18 @@ public class BotActor extends Actor {
     public void attack(ManActor a) {
         isAttacking = true;
         if (attackTimeout == 0) {
-
+            a.addDamage(Mgmt.BOT_ATTACK_DAMAGE);
+            attackTimeout = 2;
         }
     }
 
     @Override
+    protected void addDamage(int damage) {
+        super.addDamage(damage);
+    }
+
+    @Override
     protected void collideWithManActorAction(ManActor a) {
-        a.addDamage(1);
-        gs.showMessage(a.position.x, a.position.y, "-1 HP");
+        attack(a);
     }
 }
