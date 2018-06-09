@@ -2,16 +2,21 @@ package my.geek.bomberman;
 
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 public class GameScreen implements Screen {
@@ -31,9 +36,14 @@ public class GameScreen implements Screen {
     private Camera camera;
     private Stage stage;
     private Skin skin;
-    private Group upgradeGroup;
     private Status currentStatus;
     private int levelID;
+    private Label messageLabel;
+    private float messageX;
+    private float messageY;
+    private String messageText;
+    private float messageStateTime;
+    private boolean showMessage;
 
 
     public GameScreen(SpriteBatch batch, Camera camera, int levelID) {
@@ -49,12 +59,13 @@ public class GameScreen implements Screen {
     @Override
     public void show() {
         guiFont = Assets.getInstance().getAssetManager().get("gomarice32.ttf", BitmapFont.class);
-        infoFont = Assets.getInstance().getAssetManager().get("gomarice16.ttf", BitmapFont.class);
+        infoFont = Assets.getInstance().getAssetManager().get("gomarice24.ttf", BitmapFont.class);
 
         createGUI();
         map = new Map(this, Map.Level.getLevelByID(levelID).getMapPath());
         animationEmitter = new AnimationEmitter();
         player = new ManActor(this);
+        currentStatus = Status.PLAY;
     }
 
     @Override
@@ -75,8 +86,18 @@ public class GameScreen implements Screen {
 
     public void update(float dt) {
         cameraUpdate();
-        ActorsKeeper.getInstance().updateActiveActors(dt);
-        animationEmitter.update(dt);
+        if (Gdx.input.isKeyJustPressed(Input.Keys.P)) {
+            if (currentStatus == Status.PLAY) {
+                currentStatus = Status.PAUSE;
+            } else
+                currentStatus = Status.PLAY;
+        }
+        if (currentStatus == Status.PLAY) {
+            ActorsKeeper.getInstance().updateActiveActors(dt);
+            animationEmitter.update(dt);
+            updateMessage(messageX, messageY, messageText, dt);
+        }
+        stage.act();
     }
 
     public void cameraUpdate() {
@@ -89,7 +110,26 @@ public class GameScreen implements Screen {
         map = new Map(this, Map.Level.getLevelByID(id).getMapPath());
     }
 
+    public void updateMessage(float x, float y, String text, float dt) {
+        if(showMessage && messageStateTime < 2) {
+            messageStateTime += dt;
+            messageLabel.setPosition(x, y + 100 * messageStateTime);
+            messageLabel.setText(text);
+            messageLabel.setVisible(true);
+        } else {
+            messageLabel.setVisible(false);
+            messageLabel.setText(" ");
+            messageStateTime = 0;
+            showMessage = false;
+        }
+    }
 
+    public void showMessage(float x, float y, String messageText) {
+        this.messageText = messageText;
+        this.messageX = x;
+        this.messageY = y;
+        showMessage = true;
+    }
 
     public void createGUI() {
         stage = new Stage(ScreenManager.getInstance().getViewport(), batch);
@@ -146,8 +186,20 @@ public class GameScreen implements Screen {
             });
             arrowGroup.addActor(buttonDetonateBomb);
 
-            // arrowGroup.setColor(1,1,1,1f);
+
+            Label.LabelStyle messageStyle = new Label.LabelStyle();
+            messageStyle.font = infoFont;
+            messageX = 0;
+            messageY = 0;
+            messageText = "test";
+            showMessage = false;
+            messageStateTime = 0;
+            skin.add("messageSkin", messageStyle);
+            messageLabel = new Label(messageText, skin, "messageSkin");
+            messageLabel.setPosition(messageX,messageY);
+            messageLabel.setVisible(false);
             stage.addActor(arrowGroup);
+            stage.addActor(messageLabel);
         //}
 
     }

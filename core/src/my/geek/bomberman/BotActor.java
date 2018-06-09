@@ -37,6 +37,8 @@ public class BotActor extends Actor {
     private TextureRegion currentFrame, stay_right, stay_up, stay_left, stay_down;
     private float animationSpeed;
     private float stateTime;
+    private float attackTimeout;
+    private boolean isAttacking;
     boolean isActive;
 
     public BotActor(GameScreen gs) {
@@ -71,6 +73,9 @@ public class BotActor extends Actor {
         currentDistance = 0;
         currentFrameDistance = 0;
         currentDirection = 3; //0 - right, 1 - up, 2 - left, 3 - down
+
+        attackTimeout = 0;
+        isAttacking = false;
     }
 
     public void activate(int cellX, int cellY) {
@@ -90,6 +95,13 @@ public class BotActor extends Actor {
         if (!isActive) {
             currentFrame = stay_down;
             return;
+        }
+
+        if (isAttacking) {
+            if (attackTimeout > 0)
+                attackTimeout -= dt;
+            if (attackTimeout < 0)
+                attackTimeout = 0;
         }
 
         if (currentHealth <= 0) {
@@ -192,8 +204,16 @@ public class BotActor extends Actor {
         isActive = true;
     }
 
+    public void attack(ManActor a) {
+        isAttacking = true;
+        if (attackTimeout == 0) {
+
+        }
+    }
+
     @Override
     protected void collideWithManActorAction(ManActor a) {
         a.addDamage(1);
+        gs.showMessage(a.position.x, a.position.y, "-1 HP");
     }
 }

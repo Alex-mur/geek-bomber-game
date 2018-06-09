@@ -36,7 +36,7 @@ public class NextLevelScreen implements Screen {
         Gdx.gl.glClearColor(0.4f, 0.4f, 1.0f, 1.0f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
-        font96.draw(batch, "BomberMan", 0, 600, 1280, 1, false);
+        font96.draw(batch, "Level complete!", 0, 600, 1280, 1, false);
         batch.end();
         stage.draw();
     }
