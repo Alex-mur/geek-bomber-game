@@ -21,8 +21,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 public class GameScreen implements Screen {
 
-
-
     private enum Status {
         PLAY, PAUSE;
     }
