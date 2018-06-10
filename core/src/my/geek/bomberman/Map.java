@@ -3,6 +3,7 @@ package my.geek.bomberman;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 
 import java.io.BufferedReader;
@@ -60,7 +61,7 @@ public class Map {
     private Vector2 doorPosition;
 
     private int[][] data;
-    private Texture textureGrass;
+    private TextureRegion textureGrass;
     private GameScreen gs;
     private MapEditorScreen mes;
     private Actor[][] mapActors;
@@ -68,7 +69,7 @@ public class Map {
 
     public Map(GameScreen gs, String mapName) {
         this.gs = gs;
-        textureGrass = Assets.getInstance().getAtlas().findRegion("ground/grass").getTexture();
+        textureGrass = Assets.getInstance().getAtlas().findRegion("ground/grass");
         loadMap(mapName);
     }
 
@@ -78,7 +79,7 @@ public class Map {
         this.mapHeight = cellsY;
         data = new int[getMapWidth()][getMapHeight()];
         mapActors = new Actor[getMapWidth()][getMapHeight()];
-        textureGrass = Assets.getInstance().getAtlas().findRegion("ground/grass").getTexture();
+        textureGrass = Assets.getInstance().getAtlas().findRegion("ground/grass");
         createWalls();
     }
 
@@ -172,7 +173,7 @@ public class Map {
     public void render(SpriteBatch batch) {
         for (int i = 0; i < mapWidth; i++) {
             for (int j = 0; j < mapHeight; j++) {
-                batch.draw(textureGrass, i * Mgmt.CELL_SIZE, j * Mgmt.CELL_SIZE, 0, 0, Mgmt.CELL_SIZE, Mgmt.CELL_SIZE, 1.01f ,1.01f, 0, 0, 0, 160, 160, false, false);
+                batch.draw(textureGrass, i * Mgmt.CELL_SIZE, j * Mgmt.CELL_SIZE, 0, 0, Mgmt.CELL_SIZE, Mgmt.CELL_SIZE, 1.02f ,1.02f, 0);
             }
         }
     }

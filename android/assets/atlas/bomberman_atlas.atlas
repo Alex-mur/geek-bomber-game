@@ -18,407 +18,414 @@ gameOver
   orig: 1280, 720
   offset: 0, 0
   index: -1
+pickUP
+  rotate: false
+  xy: 1284, 724
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
 
 bomberman_atlas2.png
-size: 4096,2048
+size: 8192,256
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
 alien/alien_blast
   rotate: false
-  xy: 2, 1522
-  size: 512, 512
-  orig: 512, 512
+  xy: 2, 2
+  size: 220, 220
+  orig: 220, 220
   offset: 0, 0
   index: 0
 alien/alien_blast
   rotate: false
-  xy: 2, 1008
-  size: 512, 512
-  orig: 512, 512
+  xy: 224, 2
+  size: 220, 220
+  orig: 220, 220
   offset: 0, 0
   index: 1
 alien/alien_blast
   rotate: false
-  xy: 516, 1522
-  size: 512, 512
-  orig: 512, 512
+  xy: 446, 2
+  size: 220, 220
+  orig: 220, 220
   offset: 0, 0
   index: 2
 alien/alien_blast
   rotate: false
-  xy: 2, 494
-  size: 512, 512
-  orig: 512, 512
+  xy: 668, 2
+  size: 220, 220
+  orig: 220, 220
   offset: 0, 0
   index: 3
 alien/alien_blast
   rotate: false
-  xy: 516, 1008
-  size: 512, 512
-  orig: 512, 512
+  xy: 890, 2
+  size: 220, 220
+  orig: 220, 220
   offset: 0, 0
   index: 4
 alien/alien_blast
   rotate: false
-  xy: 1030, 1522
-  size: 512, 512
-  orig: 512, 512
+  xy: 1112, 2
+  size: 220, 220
+  orig: 220, 220
   offset: 0, 0
   index: 5
 alien/alien_blast
   rotate: false
-  xy: 516, 494
-  size: 512, 512
-  orig: 512, 512
+  xy: 1334, 2
+  size: 220, 220
+  orig: 220, 220
   offset: 0, 0
   index: 6
 alien/alien_blast
   rotate: false
-  xy: 1030, 1008
-  size: 512, 512
-  orig: 512, 512
+  xy: 1556, 2
+  size: 220, 220
+  orig: 220, 220
   offset: 0, 0
   index: 7
 alien/alien_blast
   rotate: false
-  xy: 1544, 1522
-  size: 512, 512
-  orig: 512, 512
+  xy: 1778, 2
+  size: 220, 220
+  orig: 220, 220
   offset: 0, 0
   index: 8
 alien/alien_blast
   rotate: false
-  xy: 1030, 494
-  size: 512, 512
-  orig: 512, 512
+  xy: 2000, 2
+  size: 220, 220
+  orig: 220, 220
   offset: 0, 0
   index: 9
 alien/alien_blast
   rotate: false
-  xy: 1544, 1008
-  size: 512, 512
-  orig: 512, 512
+  xy: 2222, 2
+  size: 220, 220
+  orig: 220, 220
   offset: 0, 0
   index: 10
 alien/alien_blast
   rotate: false
-  xy: 2058, 1522
-  size: 512, 512
-  orig: 512, 512
+  xy: 2444, 2
+  size: 220, 220
+  orig: 220, 220
   offset: 0, 0
   index: 11
 alien/alien_blast
   rotate: false
-  xy: 1544, 494
-  size: 512, 512
-  orig: 512, 512
+  xy: 2666, 2
+  size: 220, 220
+  orig: 220, 220
   offset: 0, 0
   index: 12
 alien/alien_blast
   rotate: false
-  xy: 2058, 1008
-  size: 512, 512
-  orig: 512, 512
+  xy: 2888, 2
+  size: 220, 220
+  orig: 220, 220
   offset: 0, 0
   index: 13
 alien/alien_blast
   rotate: false
-  xy: 2572, 1522
-  size: 512, 512
-  orig: 512, 512
+  xy: 3110, 2
+  size: 220, 220
+  orig: 220, 220
   offset: 0, 0
   index: 14
 alien/alien_blast
   rotate: false
-  xy: 2058, 494
-  size: 512, 512
-  orig: 512, 512
+  xy: 3332, 2
+  size: 220, 220
+  orig: 220, 220
   offset: 0, 0
   index: 15
 alien/alien_blast
   rotate: false
-  xy: 2572, 1008
-  size: 512, 512
-  orig: 512, 512
+  xy: 3554, 2
+  size: 220, 220
+  orig: 220, 220
   offset: 0, 0
   index: 16
 alien/alien_blast
   rotate: false
-  xy: 3086, 1522
-  size: 512, 512
-  orig: 512, 512
+  xy: 3776, 2
+  size: 220, 220
+  orig: 220, 220
   offset: 0, 0
   index: 17
 alien/alien_blast
   rotate: false
-  xy: 2572, 494
-  size: 512, 512
-  orig: 512, 512
+  xy: 3998, 2
+  size: 220, 220
+  orig: 220, 220
   offset: 0, 0
   index: 18
 alien/alien_blast
   rotate: false
-  xy: 3086, 1008
-  size: 512, 512
-  orig: 512, 512
+  xy: 4220, 2
+  size: 220, 220
+  orig: 220, 220
   offset: 0, 0
   index: 19
 alien/alien_blast
   rotate: false
-  xy: 3086, 494
-  size: 512, 512
-  orig: 512, 512
+  xy: 4442, 2
+  size: 220, 220
+  orig: 220, 220
   offset: 0, 0
   index: 20
 alien/walk_down
   rotate: false
-  xy: 2, 412
+  xy: 4664, 142
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: 0
 alien/walk_down
   rotate: false
-  xy: 3600, 1954
+  xy: 4664, 60
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: 1
 alien/walk_down
   rotate: false
-  xy: 2, 330
+  xy: 4746, 142
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: 2
 alien/walk_down
   rotate: false
-  xy: 84, 412
+  xy: 4746, 60
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: 3
 alien/walk_down
   rotate: false
-  xy: 3600, 1872
+  xy: 4828, 142
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: 4
 alien/walk_down
   rotate: false
-  xy: 3682, 1954
+  xy: 4828, 60
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: 5
 alien/walk_down
   rotate: false
-  xy: 2, 248
+  xy: 4910, 142
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: 6
 alien/walk_down
   rotate: false
-  xy: 84, 330
+  xy: 4910, 60
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: 7
 alien/walk_down
   rotate: false
-  xy: 166, 412
+  xy: 4992, 142
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: 8
 alien/walk_left
   rotate: false
-  xy: 3600, 1790
+  xy: 4992, 60
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: 0
 alien/walk_left
   rotate: false
-  xy: 3682, 1872
+  xy: 5074, 142
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: 1
 alien/walk_left
   rotate: false
-  xy: 3764, 1954
+  xy: 5074, 60
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: 2
 alien/walk_left
   rotate: false
-  xy: 2, 166
+  xy: 5156, 142
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: 3
 alien/walk_left
   rotate: false
-  xy: 84, 248
+  xy: 5156, 60
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: 4
 alien/walk_left
   rotate: false
-  xy: 166, 330
+  xy: 5238, 142
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: 5
 alien/walk_left
   rotate: false
-  xy: 248, 412
+  xy: 5238, 60
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: 6
 alien/walk_left
   rotate: false
-  xy: 3600, 1708
+  xy: 5320, 142
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: 7
 alien/walk_left
   rotate: false
-  xy: 3682, 1790
+  xy: 5320, 60
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: 8
 alien/walk_right
   rotate: false
-  xy: 3764, 1872
+  xy: 5402, 142
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: 0
 alien/walk_right
   rotate: false
-  xy: 3846, 1954
+  xy: 5402, 60
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: 1
 alien/walk_right
   rotate: false
-  xy: 2, 84
+  xy: 5484, 142
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: 2
 alien/walk_right
   rotate: false
-  xy: 84, 166
+  xy: 5484, 60
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: 3
 alien/walk_right
   rotate: false
-  xy: 166, 248
+  xy: 5566, 142
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: 4
 alien/walk_right
   rotate: false
-  xy: 248, 330
+  xy: 5566, 60
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: 5
 alien/walk_right
   rotate: false
-  xy: 330, 412
+  xy: 5648, 142
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: 6
 alien/walk_right
   rotate: false
-  xy: 3600, 1626
+  xy: 5648, 60
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: 7
 alien/walk_right
   rotate: false
-  xy: 3682, 1708
+  xy: 5730, 142
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: 8
 alien/walk_up
   rotate: false
-  xy: 3764, 1790
+  xy: 5730, 60
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: 0
 alien/walk_up
   rotate: false
-  xy: 3846, 1872
+  xy: 5812, 142
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: 1
 alien/walk_up
   rotate: false
-  xy: 3928, 1954
+  xy: 5812, 60
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: 2
 alien/walk_up
   rotate: false
-  xy: 2, 2
+  xy: 5894, 142
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: 3
 alien/walk_up
   rotate: false
-  xy: 84, 84
+  xy: 5894, 60
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: 4
 alien/walk_up
   rotate: false
-  xy: 166, 166
+  xy: 5976, 142
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: 5
 alien/walk_up
   rotate: false
-  xy: 248, 248
+  xy: 5976, 60
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: 6
 alien/walk_up
   rotate: false
-  xy: 330, 330
+  xy: 6058, 142
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: 7
 alien/walk_up
   rotate: false
-  xy: 412, 412
+  xy: 6058, 60
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
@@ -683,442 +690,442 @@ bomb/nuke_blast
   index: 26
 
 bomberman_atlas4.png
-size: 8192,4096
+size: 8192,2048
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
 box/box_destruct
   rotate: false
-  xy: 2, 3248
-  size: 512, 512
-  orig: 512, 512
+  xy: 2, 1610
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 0
 box/box_destruct
   rotate: false
-  xy: 2, 2734
-  size: 512, 512
-  orig: 512, 512
+  xy: 2, 1208
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 1
 box/box_destruct
   rotate: false
-  xy: 516, 3248
-  size: 512, 512
-  orig: 512, 512
+  xy: 404, 1610
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 2
 box/box_destruct
   rotate: false
-  xy: 2, 2220
-  size: 512, 512
-  orig: 512, 512
+  xy: 2, 806
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 3
 box/box_destruct
   rotate: false
-  xy: 516, 2734
-  size: 512, 512
-  orig: 512, 512
+  xy: 404, 1208
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 4
 box/box_destruct
   rotate: false
-  xy: 1030, 3248
-  size: 512, 512
-  orig: 512, 512
+  xy: 806, 1610
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 5
 box/box_destruct
   rotate: false
-  xy: 2, 1706
-  size: 512, 512
-  orig: 512, 512
+  xy: 2, 404
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 6
 box/box_destruct
   rotate: false
-  xy: 516, 2220
-  size: 512, 512
-  orig: 512, 512
+  xy: 404, 806
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 7
 box/box_destruct
   rotate: false
-  xy: 1030, 2734
-  size: 512, 512
-  orig: 512, 512
+  xy: 806, 1208
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 8
 box/box_destruct
   rotate: false
-  xy: 1544, 3248
-  size: 512, 512
-  orig: 512, 512
+  xy: 1208, 1610
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 9
 box/box_destruct
   rotate: false
-  xy: 2, 1192
-  size: 512, 512
-  orig: 512, 512
+  xy: 2, 2
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 10
 box/box_destruct
   rotate: false
-  xy: 516, 1706
-  size: 512, 512
-  orig: 512, 512
+  xy: 404, 404
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 11
 box/box_destruct
   rotate: false
-  xy: 1030, 2220
-  size: 512, 512
-  orig: 512, 512
+  xy: 806, 806
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 12
 box/box_destruct
   rotate: false
-  xy: 1544, 2734
-  size: 512, 512
-  orig: 512, 512
+  xy: 1208, 1208
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 13
 box/box_destruct
   rotate: false
-  xy: 2058, 3248
-  size: 512, 512
-  orig: 512, 512
+  xy: 1610, 1610
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 14
 box/box_destruct
   rotate: false
-  xy: 2, 678
-  size: 512, 512
-  orig: 512, 512
+  xy: 404, 2
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 15
 box/box_destruct
   rotate: false
-  xy: 516, 1192
-  size: 512, 512
-  orig: 512, 512
+  xy: 806, 404
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 16
 box/box_destruct
   rotate: false
-  xy: 1030, 1706
-  size: 512, 512
-  orig: 512, 512
+  xy: 1208, 806
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 17
 box/box_destruct
   rotate: false
-  xy: 1544, 2220
-  size: 512, 512
-  orig: 512, 512
+  xy: 1610, 1208
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 18
 box/box_destruct
   rotate: false
-  xy: 2058, 2734
-  size: 512, 512
-  orig: 512, 512
+  xy: 2012, 1610
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 19
 box/box_destruct
   rotate: false
-  xy: 2572, 3248
-  size: 512, 512
-  orig: 512, 512
+  xy: 806, 2
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 20
 box/box_destruct
   rotate: false
-  xy: 2, 164
-  size: 512, 512
-  orig: 512, 512
+  xy: 1208, 404
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 21
 box/box_destruct
   rotate: false
-  xy: 516, 678
-  size: 512, 512
-  orig: 512, 512
+  xy: 1610, 806
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 22
 box/box_destruct
   rotate: false
-  xy: 1030, 1192
-  size: 512, 512
-  orig: 512, 512
+  xy: 2012, 1208
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 23
 box/box_destruct
   rotate: false
-  xy: 1544, 1706
-  size: 512, 512
-  orig: 512, 512
+  xy: 2414, 1610
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 24
 box/box_destruct
   rotate: false
-  xy: 2058, 2220
-  size: 512, 512
-  orig: 512, 512
+  xy: 1208, 2
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 25
 box/box_destruct
   rotate: false
-  xy: 2572, 2734
-  size: 512, 512
-  orig: 512, 512
+  xy: 1610, 404
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 26
 box/box_destruct
   rotate: false
-  xy: 3086, 3248
-  size: 512, 512
-  orig: 512, 512
+  xy: 2012, 806
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 27
 box/box_destruct
   rotate: false
-  xy: 516, 164
-  size: 512, 512
-  orig: 512, 512
+  xy: 2414, 1208
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 28
 box/box_destruct
   rotate: false
-  xy: 1030, 678
-  size: 512, 512
-  orig: 512, 512
+  xy: 2816, 1610
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 29
 box/box_destruct
   rotate: false
-  xy: 1544, 1192
-  size: 512, 512
-  orig: 512, 512
+  xy: 1610, 2
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 30
 box/box_destruct
   rotate: false
-  xy: 2058, 1706
-  size: 512, 512
-  orig: 512, 512
+  xy: 2012, 404
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 31
 box/box_destruct
   rotate: false
-  xy: 2572, 2220
-  size: 512, 512
-  orig: 512, 512
+  xy: 2414, 806
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 32
 box/box_destruct
   rotate: false
-  xy: 3086, 2734
-  size: 512, 512
-  orig: 512, 512
+  xy: 2816, 1208
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 33
 box/box_destruct
   rotate: false
-  xy: 3600, 3248
-  size: 512, 512
-  orig: 512, 512
+  xy: 3218, 1610
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 34
 box/box_destruct
   rotate: false
-  xy: 1030, 164
-  size: 512, 512
-  orig: 512, 512
+  xy: 2012, 2
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 35
 box/box_destruct
   rotate: false
-  xy: 1544, 678
-  size: 512, 512
-  orig: 512, 512
+  xy: 2414, 404
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 36
 box/box_destruct
   rotate: false
-  xy: 2058, 1192
-  size: 512, 512
-  orig: 512, 512
+  xy: 2816, 806
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 37
 box/box_destruct
   rotate: false
-  xy: 2572, 1706
-  size: 512, 512
-  orig: 512, 512
+  xy: 3218, 1208
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 38
 box/box_destruct
   rotate: false
-  xy: 3086, 2220
-  size: 512, 512
-  orig: 512, 512
+  xy: 3620, 1610
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 39
 box/box_destruct
   rotate: false
-  xy: 3600, 2734
-  size: 512, 512
-  orig: 512, 512
+  xy: 2414, 2
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 40
 box/box_destruct
   rotate: false
-  xy: 4114, 3248
-  size: 512, 512
-  orig: 512, 512
+  xy: 2816, 404
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 41
 box/box_destruct
   rotate: false
-  xy: 1544, 164
-  size: 512, 512
-  orig: 512, 512
+  xy: 3218, 806
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 42
 box/box_destruct
   rotate: false
-  xy: 2058, 678
-  size: 512, 512
-  orig: 512, 512
+  xy: 3620, 1208
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 43
 box/box_destruct
   rotate: false
-  xy: 2572, 1192
-  size: 512, 512
-  orig: 512, 512
+  xy: 4022, 1610
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 44
 box/box_destruct
   rotate: false
-  xy: 3086, 1706
-  size: 512, 512
-  orig: 512, 512
+  xy: 2816, 2
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 45
 box/box_destruct
   rotate: false
-  xy: 3600, 2220
-  size: 512, 512
-  orig: 512, 512
+  xy: 3218, 404
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 46
 box/box_destruct
   rotate: false
-  xy: 4114, 2734
-  size: 512, 512
-  orig: 512, 512
+  xy: 3620, 806
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 47
 box/box_destruct
   rotate: false
-  xy: 4628, 3248
-  size: 512, 512
-  orig: 512, 512
+  xy: 4022, 1208
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 48
 box/box_destruct
   rotate: false
-  xy: 2058, 164
-  size: 512, 512
-  orig: 512, 512
+  xy: 4424, 1610
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 49
 box/box_destruct
   rotate: false
-  xy: 2572, 678
-  size: 512, 512
-  orig: 512, 512
+  xy: 3218, 2
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 50
 box/box_destruct
   rotate: false
-  xy: 3086, 1192
-  size: 512, 512
-  orig: 512, 512
+  xy: 3620, 404
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 51
 box/box_destruct
   rotate: false
-  xy: 3600, 1706
-  size: 512, 512
-  orig: 512, 512
+  xy: 4022, 806
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 52
 box/box_destruct
   rotate: false
-  xy: 4114, 2220
-  size: 512, 512
-  orig: 512, 512
+  xy: 4424, 1208
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 53
 box/box_destruct
   rotate: false
-  xy: 4628, 2734
-  size: 512, 512
-  orig: 512, 512
+  xy: 4826, 1610
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 54
 box/box_destruct
   rotate: false
-  xy: 5142, 3248
-  size: 512, 512
-  orig: 512, 512
+  xy: 3620, 2
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 55
 box/box_destruct
   rotate: false
-  xy: 2572, 164
-  size: 512, 512
-  orig: 512, 512
+  xy: 4022, 404
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 56
 box/box_destruct
   rotate: false
-  xy: 3086, 678
-  size: 512, 512
-  orig: 512, 512
+  xy: 4424, 806
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 57
 box/box_destruct
   rotate: false
-  xy: 3600, 1192
-  size: 512, 512
-  orig: 512, 512
+  xy: 4826, 1208
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 58
 box/box_destruct
   rotate: false
-  xy: 4114, 1706
-  size: 512, 512
-  orig: 512, 512
+  xy: 5228, 1610
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 59
 box/box_destruct
   rotate: false
-  xy: 4628, 2220
-  size: 512, 512
-  orig: 512, 512
+  xy: 4022, 2
+  size: 400, 400
+  orig: 400, 400
   offset: 0, 0
   index: 60
 box/box_stay
   rotate: false
-  xy: 2, 2
-  size: 160, 160
-  orig: 160, 160
+  xy: 4424, 724
+  size: 80, 80
+  orig: 80, 80
   offset: 0, 0
   index: -1
 
@@ -1436,15 +1443,15 @@ door/vortex
   index: 35
 
 bomberman_atlas7.png
-size: 256,256
+size: 128,128
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
 ground/grass
   rotate: false
   xy: 2, 2
-  size: 160, 160
-  orig: 160, 160
+  size: 80, 80
+  orig: 80, 80
   offset: 0, 0
   index: -1
 
@@ -1529,14 +1536,14 @@ man/man_idle
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
-  index: 80
+  index: 87
 man/man_idle
   rotate: false
   xy: 2, 2
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
-  index: 87
+  index: 80
 man/man_idle
   rotate: false
   xy: 84, 84

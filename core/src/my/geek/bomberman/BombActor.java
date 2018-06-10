@@ -72,7 +72,7 @@ public class BombActor extends Actor{
     }
 
     public void render(SpriteBatch batch) {
-        batch.draw(bomb_stay.getKeyFrame(stateTime), position.x, position.y, 0, 0, Mgmt.CELL_SIZE, Mgmt.CELL_SIZE, 0.8f, 0.8f, 0);
+        batch.draw(bomb_stay.getKeyFrame(stateTime), position.x + 10, position.y + 10, 0, 0, Mgmt.CELL_SIZE, Mgmt.CELL_SIZE, 0.8f, 0.8f, 0);
     }
 
     public void update(float dt) {

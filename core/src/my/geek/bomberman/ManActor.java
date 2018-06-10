@@ -141,11 +141,11 @@ public class ManActor extends Actor {
 
         guiMessages.get(0).append("Health: " + currentHealth);
         guiMessages.get(1).append("Score: " + score);
-        guiMessages.get(2).append("Weapon: " + currentWeapon.type + ": x" + currentWeapon.ammoCount);
+        guiMessages.get(2).append(currentWeapon.type + ": x" + currentWeapon.ammoCount);
 
         font.draw(batch, guiMessages.get(0), 20, 700);
-        font.draw(batch, guiMessages.get(1), 900, 700);
-        font.draw(batch, guiMessages.get(2), 300, 700);
+        font.draw(batch, guiMessages.get(1), 1000, 700);
+        font.draw(batch, guiMessages.get(2), 400, 700);
     }
 
     public void update(float dt) {
@@ -296,6 +296,7 @@ public class ManActor extends Actor {
 
     public void addHP(int hp) {
         currentHealth += hp;
+        gs.showMessage(position.x, position.y, "+" + hp + " HP");
     }
 
     public void die() {
