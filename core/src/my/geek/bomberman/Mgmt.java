@@ -14,4 +14,5 @@ public final class Mgmt {
     public static final int BOT_QUANTITY = 100;
     public static final int PLAYER_MAX_HEALTH = 600;
     public static final int BOT_ATTACK_DAMAGE = 100;
+    public static final int PICKUP_DROP_PERCENT = 30;
 }

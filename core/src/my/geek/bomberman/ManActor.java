@@ -295,8 +295,14 @@ public class ManActor extends Actor {
     }
 
     public void addHP(int hp) {
-        currentHealth += hp;
-        gs.showMessage(position.x, position.y, "+" + hp + " HP");
+        if (currentHealth < Mgmt.PLAYER_MAX_HEALTH) {
+            currentHealth += hp;
+            gs.showMessage(position.x, position.y, "+" + hp + " HP");
+        }
+
+        if (currentHealth > Mgmt.PLAYER_MAX_HEALTH) {
+            currentHealth = Mgmt.PLAYER_MAX_HEALTH;
+        }
     }
 
     public void die() {
@@ -313,5 +319,11 @@ public class ManActor extends Actor {
     protected void collideWithDoorActor(DoorActor a) {
         a.removeFromActorsList();
         ScreenManager.getInstance().changeScreen(ScreenManager.ScreenType.NEXT_LEVEL);
+    }
+
+    @Override
+    protected void collideWithPickUpActor(PickUpActor a) {
+        a.addBonusToMan(this);
+        a.removeFromActorsList();
     }
 }

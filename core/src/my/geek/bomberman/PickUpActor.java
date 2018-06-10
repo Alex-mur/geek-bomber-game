@@ -23,6 +23,7 @@ public class PickUpActor extends Actor {
         this.currentType = type;
         this.position = new Vector2(cellX * Mgmt.CELL_SIZE + Mgmt.CELL_HALF_SIZE, cellY * Mgmt.CELL_SIZE + Mgmt.CELL_HALF_SIZE);
         this.collider = new Rectangle(position.x - Mgmt.CELL_HALF_SIZE, position.y - Mgmt.CELL_HALF_SIZE, Mgmt.CELL_SIZE, Mgmt.CELL_SIZE);
+        activate();
     }
 
     public void render(SpriteBatch batch) {

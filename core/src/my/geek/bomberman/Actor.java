@@ -72,6 +72,11 @@ public class Actor {
                     collideWithDoorActor((DoorActor) a);
                     list.add(a);
                 }
+
+                if (a instanceof PickUpActor) {
+                    collideWithPickUpActor((PickUpActor) a);
+                    list.add(a);
+                }
             }
         }
         return list;
@@ -96,6 +101,8 @@ public class Actor {
     protected void collideWithBotActor(BotActor a) {}
 
     protected void collideWithDoorActor(DoorActor a) {}
+
+    protected void collideWithPickUpActor(PickUpActor a) {}
 
     protected void setPosition (float x, float y) {
         position.set(x, y);

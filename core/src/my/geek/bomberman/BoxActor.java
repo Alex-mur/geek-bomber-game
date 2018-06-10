@@ -2,6 +2,7 @@ package my.geek.bomberman;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
@@ -31,7 +32,12 @@ public class BoxActor extends Actor {
     public void destruct() {
         if (gs.getMap().getDoorPosition().x - Mgmt.CELL_HALF_SIZE == position.x && gs.getMap().getDoorPosition().y - Mgmt.CELL_HALF_SIZE == position.y) {
             gs.getMap().getDoor().activate();
+        } else {
+            //if (MathUtils.random(1, 100) < Mgmt.PICKUP_DROP_PERCENT) {
+            new PickUpActor(getCellX(), getCellY(), PickUpActor.Type.HP_100);
+            //}
         }
+
         removeFromActorsList();
         gs.getMap().clearCell(getCellX(), getCellY());
         AnimationEmitter.emitter.createAnimation(position.x, position.y, AnimationEmitter.AnimationType.BOX_DESTRUCT);

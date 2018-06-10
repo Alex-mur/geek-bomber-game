@@ -14,7 +14,7 @@ public class AnimationEmitter {
         NUKE_BLAST(-145f, -80f, 0.5f, 0.5f, 0.06f, "bomb/nuke_blast"),
         BOMB_BLAST(0,0,1.3f,1.3f,0.07f, "bomb/bomb_blast"),
         ALIEN_BLAST(-100,-80,0.4f,0.4f,0.06f, "alien/alien_blast"),
-        BOX_DESTRUCT(-230,-210,1.1f,1.1f,0.03f,"box/box_destruct");
+        BOX_DESTRUCT(-260,-250,1.6f,1.6f,0.03f,"box/box_destruct");
 
         private Vector2 shift;
         private Vector2 scale;
