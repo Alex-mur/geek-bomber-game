@@ -17,7 +17,6 @@ public class ManActor extends Actor {
         private int ammoCount;
         private BombActor.BombType type;
         private BombActor[] bombs;
-        private Sound emptySound;
 
         public BombWeapon(BombActor.BombType type) {
             this.type = type;
@@ -28,12 +27,10 @@ public class ManActor extends Actor {
             }
 
             ammoCount = type.getStartAmmoCount();
-            emptySound = Gdx.audio.newSound(Gdx.files.internal("sounds/fart.ogg"));
         }
 
         public void putBomb(int x, int y, ManActor man) {
             if (ammoCount == 0) {
-                emptySound.play();
                 return;
             }
 

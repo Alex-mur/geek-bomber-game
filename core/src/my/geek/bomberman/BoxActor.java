@@ -33,9 +33,9 @@ public class BoxActor extends Actor {
         if (gs.getMap().getDoorPosition().x - Mgmt.CELL_HALF_SIZE == position.x && gs.getMap().getDoorPosition().y - Mgmt.CELL_HALF_SIZE == position.y) {
             gs.getMap().getDoor().activate();
         } else {
-            //if (MathUtils.random(1, 100) < Mgmt.PICKUP_DROP_PERCENT) {
-            new PickUpActor(getCellX(), getCellY(), PickUpActor.Type.HP_100);
-            //}
+            if (MathUtils.random(1, 100) < Mgmt.PICKUP_DROP_PERCENT) {
+                new PickUpActor(getCellX(), getCellY(), PickUpActor.Type.HP_100);
+            }
         }
 
         removeFromActorsList();
