@@ -9,13 +9,12 @@ public class WallActor extends Actor{
     public WallActor(float x, float y, GameScreen gs) {
         this.gs = gs;
         texture = Assets.getInstance().getAtlas().findRegion("wall/wall_stone").getTexture();
-        position = new Vector2();
+        position = new Vector2(x, y);
         collider = new Rectangle(x, y, Mgmt.CELL_SIZE, Mgmt.CELL_SIZE);
-        setPosition(x, y);
         activate();
     }
 
     public void render(SpriteBatch batch) {
-        batch.draw(texture, position.x, position.y, 0, 0, Mgmt.CELL_SIZE, Mgmt.CELL_SIZE, 1.025f, 1.025f, 0, 0, 0, Mgmt.CELL_SIZE, Mgmt.CELL_SIZE, false, false);
+        batch.draw(texture, position.x, position.y, 0, 0, Mgmt.CELL_SIZE, Mgmt.CELL_SIZE, 1.03f, 1.03f, 0, 0, 0, 80, 80, false, false);
     }
 }

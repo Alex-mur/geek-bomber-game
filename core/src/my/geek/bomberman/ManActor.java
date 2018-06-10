@@ -55,6 +55,7 @@ public class ManActor extends Actor {
 
     private int score;
     private float speed;
+    private float speedMult;
     private boolean isMoving;
     private int currentDistance;
     private int currentFrameDistance;
@@ -63,6 +64,7 @@ public class ManActor extends Actor {
     private boolean putButtonPressed;
     private boolean detonateButtonPressed;
     private Vector<Integer> solidElements;
+
 
     private ArrayList<BombWeapon> weaponInventory;
     private BombWeapon currentWeapon;
@@ -82,7 +84,8 @@ public class ManActor extends Actor {
         position = gs.getMap().getStartPosition();
         collider = new Rectangle(position.x - Mgmt.CELL_HALF_SIZE, position.y - Mgmt.CELL_HALF_SIZE, Mgmt.CELL_SIZE / 1.8f, Mgmt.CELL_SIZE / 1.8f);
 
-        speed = Mgmt.GAME_SPEED * 1.8f;
+        speedMult = 2f;
+        speed = Mgmt.GAME_SPEED * speedMult;
         animationSpeed = Mgmt.GAME_SPEED * 0.00045f;
         stateTime = 0f;
         idleStateTime = 0f;
@@ -127,7 +130,7 @@ public class ManActor extends Actor {
     }
 
     public void render(SpriteBatch batch) {
-        batch.draw(currentFrame, position.x - Mgmt.CELL_HALF_SIZE, position.y - Mgmt.CELL_HALF_SIZE);
+        batch.draw(currentFrame, position.x - Mgmt.CELL_HALF_SIZE, position.y - Mgmt.CELL_HALF_SIZE, 0, 0, Mgmt.CELL_SIZE, Mgmt.CELL_SIZE, 1, 1, 0);
 
     }
 

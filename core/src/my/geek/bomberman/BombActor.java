@@ -15,7 +15,7 @@ public class BombActor extends Actor{
 
     public enum BombType {
         BOMB(3, 200, 999, AnimationEmitter.AnimationType.BOMB_BLAST, false, 3),
-        NUKE(10, 400, 1, AnimationEmitter.AnimationType.NUKE_BLAST, true, -1);
+        NUKE(10, 400, 4, AnimationEmitter.AnimationType.NUKE_BLAST, true, -1);
 
         private int blastRadius;
         private int damage;
@@ -72,7 +72,7 @@ public class BombActor extends Actor{
     }
 
     public void render(SpriteBatch batch) {
-        batch.draw(bomb_stay.getKeyFrame(stateTime), position.x + 5, position.y + 5, 0, 0, 80, 80, 0.8f, 0.8f, 0);
+        batch.draw(bomb_stay.getKeyFrame(stateTime), position.x, position.y, 0, 0, Mgmt.CELL_SIZE, Mgmt.CELL_SIZE, 0.8f, 0.8f, 0);
     }
 
     public void update(float dt) {

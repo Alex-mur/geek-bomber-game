@@ -18,7 +18,7 @@ public class BoxActor extends Actor {
     }
 
     public void render(SpriteBatch batch) {
-        batch.draw(texture, position.x, position.y, 0, 0, 80, 80, 1, 1, 0, 0, 0, 160, 160, false, false);
+        batch.draw(texture, position.x, position.y, 0, 0, Mgmt.CELL_SIZE, Mgmt.CELL_SIZE, 1, 1, 0, 0, 0, 160, 160, false, false);
     }
 
     public void update(float dt) {

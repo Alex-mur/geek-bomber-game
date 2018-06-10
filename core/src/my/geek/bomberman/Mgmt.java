@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 public final class Mgmt {
 
 
-    public static final int CELL_SIZE = 80;
+    public static final int CELL_SIZE = 110;
     public static final int CELL_HALF_SIZE = CELL_SIZE / 2;
     public static final int GAME_SPEED = 100;
     public static final int SFX_QUANTITY = 200;

@@ -11,10 +11,10 @@ import java.util.Map;
 
 public class AnimationEmitter {
     public enum AnimationType {
-        NUKE_BLAST(-170f, -90f, 0.5f, 0.5f, 0.06f, "bomb/nuke_blast"),
-        BOMB_BLAST(0,0,1f,1f,0.07f, "bomb/bomb_blast"),
+        NUKE_BLAST(-145f, -80f, 0.5f, 0.5f, 0.06f, "bomb/nuke_blast"),
+        BOMB_BLAST(0,0,1.3f,1.3f,0.07f, "bomb/bomb_blast"),
         ALIEN_BLAST(-100,-80,0.4f,0.4f,0.06f, "alien/alien_blast"),
-        BOX_DESTRUCT(-220,-230,1f,1f,0.03f,"box/box_destruct");
+        BOX_DESTRUCT(-230,-210,1.1f,1.1f,0.03f,"box/box_destruct");
 
         private Vector2 shift;
         private Vector2 scale;
@@ -51,7 +51,7 @@ public class AnimationEmitter {
     public void createAnimation(float x, float y, AnimationType type) {
         for (int i = 0; i < sfxAnimations.length; i++) {
             if (!sfxAnimations[i].isActive()) {
-                sfxAnimations[i].activate(x + type.shift.x , y + type.shift.y, keyFramesCollection.get(type), type.frameDuration, type.scale.x  , type.scale.y);
+                sfxAnimations[i].activate(x + type.shift.x , y + type.shift.y, keyFramesCollection.get(type), type.frameDuration, type.scale.x, type.scale.y);
                 break;
             }
         }

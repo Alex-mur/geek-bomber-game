@@ -49,7 +49,7 @@ public class Assets {
                 break;
             case GAME:
                 assetManager.load("atlas/bomberman_atlas.atlas", TextureAtlas.class);
-                createStdFont(32);
+                createStdFont(48);
                 createStdFont(24);
                 assetManager.finishLoading();
                 atlas = assetManager.get("atlas/bomberman_atlas.atlas", TextureAtlas.class);

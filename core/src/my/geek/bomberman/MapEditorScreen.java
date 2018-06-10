@@ -21,6 +21,10 @@ import java.io.BufferedWriter;
 
 public class MapEditorScreen implements Screen {
 
+    public enum Status {
+        EDIT, MENU
+    }
+
     private SpriteBatch batch;
     private Map map;
     private MapEditorActor mapEditor;
@@ -31,7 +35,7 @@ public class MapEditorScreen implements Screen {
     private Stage stage;
     private Skin skin;
     private boolean isMenuHide;
-
+    private Status status;
 
     public MapEditorScreen(SpriteBatch batch, Camera camera, int cellsX, int cellsY) {
         this.batch = batch;
@@ -52,6 +56,7 @@ public class MapEditorScreen implements Screen {
         createGUI();
         mapEditor = new MapEditorActor(this, camera);
         font32 = Assets.getInstance().getAssetManager().get("gomarice32.ttf", BitmapFont.class);
+        status = Status.EDIT;
     }
 
     @Override
@@ -71,7 +76,9 @@ public class MapEditorScreen implements Screen {
 
     public void update(float dt) {
         cameraUpdate();
-        ActorsKeeper.getInstance().updateActiveActors(dt);
+        if (status == Status.EDIT) {
+            ActorsKeeper.getInstance().updateActiveActors(dt);
+        }
     }
 
     public void cameraUpdate() {
@@ -90,51 +97,66 @@ public class MapEditorScreen implements Screen {
         skin.add("simpleSkin", textButtonStyle);
 
         final Group menuGroup = new Group();
-        menuGroup.setPosition(0, 0);
-        Table menuTable = new Table();
-        menuTable.setFillParent(true);
-        menuTable.top();
         Button grassBlock = new Button(skin.getDrawable("ground/grass"));
         Button wallBlock = new Button(skin.getDrawable("wall/wall_stone"));
         Button boxBlock = new Button(skin.getDrawable("box/box_stay"));
         Button botBlock = new Button(skin.getDrawable("box/box_stay"));
+        Button hideMenu = new Button(skin.getDrawable("controls/btn_right"));
+        menuGroup.addActor(grassBlock);
+        menuGroup.addActor(wallBlock);
+        menuGroup.addActor(boxBlock);
+        menuGroup.addActor(botBlock);
+        menuGroup.addActor(hideMenu);
+        menuGroup.setPosition(0, 300);
+        grassBlock.setPosition(0,0);
+        wallBlock.setPosition(0, 120);
+        boxBlock.setPosition(120, 0);
+        botBlock.setPosition(120,120);
+        hideMenu.setPosition(260, 100);
 
-        TextButton hideMenu = new TextButton("hide", skin, "simpleSkin");
-
-        menuTable.add(grassBlock);
-        menuTable.add();
-        menuTable.add(wallBlock);
-        menuTable.add();
-        menuTable.add(boxBlock);
-        menuTable.row();
-        menuTable.add(botBlock);
-        menuTable.row();
-        menuTable.add(hideMenu);
-
-        menuGroup.addActor(menuTable);
 
         grassBlock.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                mapEditor.setCurrentType(Map.CellType.CELL_EMPTY);
+                if ((x > 0) && (y > 0) && (x < map.getMapWidth()) && (y < map.getMapHeight())) {
+                    mapEditor.setCurrentType(Map.CellType.CELL_EMPTY);
+                    menuGroup.setPosition(0, 300);
+                    isMenuHide = true;
+                    status = Status.EDIT;
+                }
             }
         });
         wallBlock.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                mapEditor.setCurrentType(Map.CellType.CELL_WALL);
+                if ((x > 0) && (y > 0) && (x < map.getMapWidth()) && (y < map.getMapHeight())) {
+                    mapEditor.setCurrentType(Map.CellType.CELL_WALL);
+                    menuGroup.setPosition(0, 300);
+                    isMenuHide = true;
+                    status = Status.EDIT;
+                }
             }
         });
         boxBlock.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                mapEditor.setCurrentType(Map.CellType.CELL_BOX);
+                if ((x > 0) && (y > 0) && (x < map.getMapWidth()) && (y < map.getMapHeight())) {
+                    mapEditor.setCurrentType(Map.CellType.CELL_BOX);
+                    menuGroup.setPosition(0, 300);
+                    isMenuHide = true;
+                    status = Status.EDIT;
+                }
             }
         });
         botBlock.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                mapEditor.setCurrentType(Map.CellType.CELL_BOT);
+                if ((x > 0) && (y > 0) && (x < map.getMapWidth()) && (y < map.getMapHeight())) {
+                    mapEditor.setCurrentType(Map.CellType.CELL_BOT);
+                    menuGroup.setPosition(0, 300);
+                    isMenuHide = true;
+                    status = Status.EDIT;
+                }
             }
         });
 
@@ -142,9 +164,12 @@ public class MapEditorScreen implements Screen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 if (isMenuHide) {
-                    menuGroup.setPosition(100, 300);
+                    menuGroup.setPosition(400, 300);
+                    status = Status.MENU;
                 } else {
-                    menuGroup.setPosition(100, 1100);
+                    menuGroup.setPosition(0, 300);
+                    isMenuHide = true;
+                    status = Status.EDIT;
                 }
             }
         });
@@ -153,9 +178,7 @@ public class MapEditorScreen implements Screen {
     }
 
     @Override
-    public void dispose() {
-        batch.dispose();
-    }
+    public void dispose() {}
 
     @Override
     public void resize(int width, int height) {

@@ -172,7 +172,7 @@ public class Map {
     public void render(SpriteBatch batch) {
         for (int i = 0; i < mapWidth; i++) {
             for (int j = 0; j < mapHeight; j++) {
-                batch.draw(textureGrass, i * Mgmt.CELL_SIZE, j * Mgmt.CELL_SIZE, 0, 0, 80, 80, 1.05f ,1.05f, 0, 0, 0, 160, 160, false, false);
+                batch.draw(textureGrass, i * Mgmt.CELL_SIZE, j * Mgmt.CELL_SIZE, 0, 0, Mgmt.CELL_SIZE, Mgmt.CELL_SIZE, 1.01f ,1.01f, 0, 0, 0, 160, 160, false, false);
             }
         }
     }

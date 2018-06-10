@@ -47,7 +47,7 @@ public class ScreenManager {
         this.viewport = new FitViewport(1280, 720, camera);
         this.menuScreen = new MenuScreen(batch);
         this.gameScreen = new GameScreen(batch, camera, currentLevelID);
-        this.mapEditorScreen = new MapEditorScreen(batch, camera, 5, 5);
+        this.mapEditorScreen = new MapEditorScreen(batch, camera, 20, 20);
         this.gameOverScreen = new GameOverScreen(batch);
         this.loadingScreen = new LoadingScreen(batch);
         this.nextLevelScreen = new NextLevelScreen(batch);

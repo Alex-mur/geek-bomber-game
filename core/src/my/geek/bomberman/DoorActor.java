@@ -20,7 +20,7 @@ public class DoorActor extends Actor {
     }
 
     public void render(SpriteBatch batch) {
-        batch.draw(animation.getKeyFrame(stateTime), position.x - Mgmt.CELL_HALF_SIZE, position.y - Mgmt.CELL_HALF_SIZE,0, 0, 80, 80, 1, 1, 0);
+        batch.draw(animation.getKeyFrame(stateTime), position.x - Mgmt.CELL_HALF_SIZE, position.y - Mgmt.CELL_HALF_SIZE,0, 0, Mgmt.CELL_SIZE, Mgmt.CELL_SIZE, 1, 1, 0);
     }
 
     public void update(float dt) {

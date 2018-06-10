@@ -61,7 +61,7 @@ public class GameScreen implements Screen {
 
     @Override
     public void show() {
-        guiFont = Assets.getInstance().getAssetManager().get("gomarice32.ttf", BitmapFont.class);
+        guiFont = Assets.getInstance().getAssetManager().get("gomarice48.ttf", BitmapFont.class);
         infoFont = Assets.getInstance().getAssetManager().get("gomarice24.ttf", BitmapFont.class);
 
         createGUI();
